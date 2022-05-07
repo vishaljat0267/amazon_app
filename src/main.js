@@ -1,0 +1,44 @@
+import Dashboard from './dashboard/dashboard';
+import './app.css'
+import Home from '../src/Pages/Home'
+import Protected from './common/private'
+
+import React, { useState } from 'react';
+import Signup from './components/signUp/signUp';
+import SignIn from './components/signIn/signIn';
+import HomePage from './Pages/homePage';
+import SignIn2 from './components/signIn/signIn2';
+import SigninPopover from './popovers/signinPopover';
+import { useRoutes } from 'react-router-dom';
+import Verification from './components/verificationCode/verification';
+import Productsdetails from './components/Helper/productsdetails';
+import Container from './Pages/container';
+import Drawer1 from './dashboard/helper/sidemenu';
+import Addcard from './components/Helper/addcard';
+import Cardshow from './components/Helper/cardshow';
+ export default function Main() {
+
+  const routes = useRoutes([
+    {
+      path: "/", element: <Dashboard />, children: [
+        { path: '/', element: <Container /> },
+        { path: 'productDetails', element: <Productsdetails /> },
+        { path: '/cardshow', element: <Cardshow /> }
+      ]
+    },
+    { path: 'signIn', element: <SignIn /> },
+    { path: 'signIn2', element: <SignIn2 /> },
+    { path: 'signup', element: <Signup /> },
+    { path: 'verification', element: <Verification /> },
+    { path: '/addcard', element: <Addcard /> },
+    // {path :'/cardshow', element:<Cardshow/>}
+
+    // {path:"/dashboard" ,element:<Protected page={<Dashboard />} />},
+  ])
+
+  return routes;
+
+}
+
+
+

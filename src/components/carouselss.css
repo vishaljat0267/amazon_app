@@ -1,0 +1,36 @@
+.body {
+    background-color: white;
+}
+
+#main-slider-container {
+    max-width: 100vw;
+    min-height: 364px;
+    
+    display: flex;
+    
+    align-items: center;
+}
+
+#slider {
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+
+
+.slider-card {
+    min-width: 245px;
+    min-height: 364px;
+    background: whitesmoke;
+    display: inline-block;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0 / 12%);
+    /* margin-left: 3px;
+    margin-right: 3px; */
+}
