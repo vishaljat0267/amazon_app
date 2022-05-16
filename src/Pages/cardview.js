@@ -44,9 +44,9 @@ export default function Cardview() {
     // await cardApi4().then(res => { setData4(res.data.data) })
 
   }, [])
-  // console.log(data2, data1, data3, data4);
-  console.log(cartitems,"data");
-  console.log(cartitems1,"data");
+ 
+  // console.log(cartitems,"data");
+  // console.log(cartitems1,"data");
 
 
  return (
