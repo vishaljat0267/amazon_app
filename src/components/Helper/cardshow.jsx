@@ -8,7 +8,7 @@ export default function Cardshow() {
   const [cartData, setCartData] = useState([])
  
 const dispatch = useDispatch();
-const items = useSelector((state)=> state.Cart.items);
+const items = useSelector((state)=> state.cart.items);
 useEffect( () => {
  
   gitList()
@@ -20,10 +20,10 @@ useEffect( () => {
     
 
   }
-  const deleteItem = async (id) => {
+  const deleteItem = (id) => {
     dispatch(deleteCartItems(id))
   }
-  const cartupdate = async (e,update, id) => {
+  const cartupdate =  (e,update, id) => {
 
     e.preventDefault();
     
@@ -43,7 +43,7 @@ useEffect( () => {
     <div style={{display:'flex',width:'100%',height:'auto',justifyContent:'space-between',padding:'1%'}}>
     <div style={{ backgroundColor: 'white', height: 'auto', width: '65%', display: 'flex', flexDirection: 'column',padding:'2%' }}>
       {cartData.map((val, key) => {
-        totalCartPrice += val.price * val.quantity
+        totalCartPrice += val.price* val.quantity
         return (<React.Fragment key={key}>
           <div key={key} style={{ display: 'flexlex', justifyContent: 'center', height: 'auto', width: '100%' }}>
             <h3>{val.title}</h3>
@@ -78,10 +78,14 @@ useEffect( () => {
     <div>
     <h1>Total Price:</h1>
     
-   <b style={{fontSize:'3em'}}>₹ {totalCartPrice}</b>
+   <b style={{fontSize:'3em'}}>₹ {totalCartPrice.toFixed(2)}</b>
     </div>
      <div style={{display:'flex',justifyContent:'center'}}>
-      <button style={{height:'10%',width:'60%',borderRadius:'1vw',background:'#ffd814',borderColor:'#fcd200',paddingTop:'',flexWrap:'wrap'}}>Proceed To Pay</button>
+      
+      <button style={{height:'10%',width:'60%',borderRadius:'1vw',background:'#ffd814',borderColor:'#fcd200',paddingTop:'',flexWrap:'wrap'}}>
+         <a  style={{ color: 'white',backgroundColor:'#ffd814',fontSize:'2vw' }} className="ex5"href="https://rzp.io/l/i1kL91x">Proceed To Pay </a>
+         </button>
+     
       </div>
 
 

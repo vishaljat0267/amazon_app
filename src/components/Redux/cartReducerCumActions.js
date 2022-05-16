@@ -31,24 +31,48 @@ export const updateCartItems = (payload) => ({ type: UPDATE_CART_ITEMS, payload}
 export const updateCartItemsSuccess = (payload) => ({ type: UPDATE_CART_ITEMS_SUCCESS, payload});
 export const updateCartItemsFail = (payload=null) => ({ type: UPDATE_CART_ITEMS_FAIL, payload});
 
-export const GET_CART_ITEMS_FAIL = "GET_CART_ITEMS_FAIL";
-export const GET_CART_ITEMS_SUCCESS = "GET_CART_ITEMS_SUCCESS";
-export const GET_CART_ITEMS = "GET_CART_ITEMS"
+export const GET_CART_CARTITEMS_FAIL = "GET_CART_CARTITEMS_FAIL";
+export const GET_CART_CARTITEMS_SUCCESS = "GET_CART_CARTITEMS_SUCCESS";
+export const GET_CART_CARTITEMS = "GET_CART_CARTITEMS"
 
-export const getCartItemsSuccess = (payload) => ({ type: GET_CART_ITEMS_SUCCESS, payload });
-export const getCartItemsFail= (payload) => ({ type: GET_CART_ITEMS_FAIL, payload });
-export const getCartItems= (payload) => ({ type: GET_CART_ITEMS, payload });
+export const getCartcartItemsSuccess = (payload) => ({ type: GET_CART_CARTITEMS_SUCCESS, payload });
+export const getCartcartItemsFail= (payload) => ({ type: GET_CART_CARTITEMS_FAIL, payload });
+export const getCartcartItems= (payload) => ({ type: GET_CART_CARTITEMS, payload });
+
+export const GET_CART_CARTITEMS1_FAIL = "GET_CART_CARTITEMS1_FAIL";
+export const GET_CART_CARTITEMS1_SUCCESS = "GET_CART_CARTITEMS1_SUCCESS";
+export const GET_CART_CARTITEMS1 = "GET_CART_CARTITEMS1"
+
+export const getCartcartItems1Success = (payload) => ({ type: GET_CART_CARTITEMS1_SUCCESS, payload });
+export const getCartcartItems1Fail= (payload) => ({ type: GET_CART_CARTITEMS1_FAIL, payload });
+export const getCartcartItems1= (payload) => ({ type: GET_CART_CARTITEMS1, payload });
+
+export const GET_CART_CARTITEMS2_FAIL = "GET_CART_CARTITEMS2_FAIL";
+export const GET_CART_CARTITEMS2_SUCCESS = "GET_CART_CARTITEMS2_SUCCESS";
+export const GET_CART_CARTITEMS2 = "GET_CART_CARTITEMS2"
+
+export const getCartcartItems2Success = (payload) => ({ type: GET_CART_CARTITEMS2_SUCCESS, payload });
+export const getCartcartItems2Fail= (payload) => ({ type: GET_CART_CARTITEMS2_FAIL, payload });
+export const getCartcartItems2= (payload) => ({ type: GET_CART_CARTITEMS2, payload });
+
+export const GET_CART_CARTITEMS3_FAIL = "GET_CART_CARTITEMS3_FAIL";
+export const GET_CART_CARTITEMS3_SUCCESS = "GET_CART_CARTITEMS3_SUCCESS";
+export const GET_CART_CARTITEMS3 = "GET_CART_CARTITEMS3"
+
+export const getCartcartItems3Success = (payload) => ({ type: GET_CART_CARTITEMS3_SUCCESS, payload });
+export const getCartcartItems3Fail= (payload) => ({ type: GET_CART_CARTITEMS3_FAIL, payload });
+export const getCartcartItems3= (payload) => ({ type: GET_CART_CARTITEMS3, payload });
 
 const initialState = {
-        cartitems:[],
+        
         loading : true,
         items : [],
   }
   
   
-  function cart(state = initialState, action) {
+ export const  cart=(state = initialState, action)=> {
     const { type, payload } = action;
-    console.log("OOOOOOOOOOOOOOOOOOOOOO",type, payload);
+    console.log("OOOOOOOOOOO",type, payload);
     switch (type) {
       // GET ALL CART ITEMS
       case FETCH_CART_ITEMS:
@@ -117,24 +141,9 @@ case DELETE_CART_ITEMS:
                 items : payload
         }
 
-        // ------------get items -----------------
+       
 
-        case GET_CART_ITEMS:
-                return {
-                        loading : false,
-                        cartitems : payload
-                } 
-              case GET_CART_ITEMS_FAIL:
-                return {
-                        loading : false,
-                        cartitems : payload
-                } 
-                case GET_CART_ITEMS_SUCCESS:
-                  return {
-                //        ...state,cartitems:[...state.cartitems,payload],loading:true
-                loading : true,
-                cartitems : payload
-                  } 
+       
   
 
       default:
@@ -142,12 +151,148 @@ case DELETE_CART_ITEMS:
     }
   }
 
+
+ //-----------GET ALL PRODUCTS--------------------
+
+  const itemsState={
+          loading:true,
+          cartitems:[],
+         }
+ 
+export const  allItems=(state = itemsState, action)=>{
+        const { type, payload } = action;
+        console.log("allItemsreducers",type, payload);
+        switch (type) {
+                case GET_CART_CARTITEMS:
+                return {
+                        loading : false,
+                        cartitems : payload
+                } 
+              case GET_CART_CARTITEMS_FAIL:
+                return {
+                        loading : false,
+                        cartitems : payload
+                } 
+                case GET_CART_CARTITEMS_SUCCESS:
+                  return {
+               
+                loading : true,
+                cartitems : payload
+                  } 
+
+                  default:
+        return state
+    }
+  }
+  const itemsState1={
+        loading:true,
+         cartitems1:[]
+       
+        
+
+}
+
+  export const  allItems1=(state = itemsState1, action)=>{
+        const { type, payload } = action;
+        console.log("allItemsreducers",type, payload);
+        switch (type) {
+                  
+                  case GET_CART_CARTITEMS1:
+                        return {
+                                loading : false,
+                                cartitems1 : payload
+                        } 
+                      case GET_CART_CARTITEMS1_FAIL:
+                        return {
+                                loading : false,
+                                cartitems1 : payload
+                        } 
+                        case GET_CART_CARTITEMS1_SUCCESS:
+                          return {
+                       
+                        loading : true,
+                        cartitems1 : payload
+                          } 
+    default:
+        return state
+    }
+  }
+  const itemsState2={
+        loading:true,
+         cartitems2:[]
+       
+        
+
+}
+
+  export const  allItems2=(state = itemsState2, action)=>{
+        const { type, payload } = action;
+        console.log("allItemsreducers",type, payload);
+        switch (type) {
+                  
+                  case GET_CART_CARTITEMS2:
+                        return {
+                                loading : false,
+                                cartitems2 : payload
+                        } 
+                      case GET_CART_CARTITEMS2_FAIL:
+                        return {
+                                loading : false,
+                                cartitems2 : payload
+                        } 
+                        case GET_CART_CARTITEMS2_SUCCESS:
+                          return {
+                       
+                        loading : true,
+                        cartitems2 : payload
+                          } 
+    default:
+        return state
+    }
+  }
+
+  const itemsState3={
+        loading:true,
+         cartitems3:[]
+       
+        
+
+}
+
+  export const  allItems3=(state = itemsState3, action)=>{
+        const { type, payload } = action;
+        console.log("allItemsreducers",type, payload);
+        switch (type) {
+                  
+                  case GET_CART_CARTITEMS3:
+                        return {
+                                loading : false,
+                                cartitems3 : payload
+                        } 
+                      case GET_CART_CARTITEMS3_FAIL:
+                        return {
+                                loading : false,
+                                cartitems3 : payload
+                        } 
+                        case GET_CART_CARTITEMS3_SUCCESS:
+                          return {
+                       
+                        loading : true,
+                        cartitems3 : payload
+                          } 
+    default:
+        return state
+    }
+  }
+
+
+
  
 
   
   
   
-  export default cart
+  
  
  
   

@@ -23,7 +23,7 @@ export const updateNewItemToCart = async (id) =>{
     console.log(id);
     return await axios.patch(`${BASE_URL}/updatequantity/${id.payload.id}`,id.payload)
 }
-export const getitmesList1 = async (data) =>{
+export const getitmesList1 = async () =>{
     return await axios.get(`${BASE_URL}/card`)
 }
 

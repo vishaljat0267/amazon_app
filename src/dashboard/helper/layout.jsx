@@ -19,7 +19,7 @@ export default function Layout(props) {
 
 
     const name = props.name
-    const {items} = useSelector((state)=> state.Cart);
+    const {items} = useSelector((state)=> state.cart);
     const dispatch = useDispatch(); 
     const [totalCartItems, setTotalCartItems] = useState(0);
 

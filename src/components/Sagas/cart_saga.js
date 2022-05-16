@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest, } from 'redux-saga/effects'
 import {addNewItemToCart,getAllCartItems,deleteNewItemToCart, updateNewItemToCart, getitmesList1, getitmesList2, getitmesList3, getitmesList4} from '../Services/cartservice'
 import {FETCH_CART_ITEMS,fetchCartItemsFail,fetchCartItemsSuccess,fetchCartItems,
-   ADD_CART_ITEMS, addCartItemsFail, addCartItemsSuccess,DELETE_CART_ITEMS,deleteCartItemsFail,deleteCartItemsSuccess, updateCartItemsSuccess, updateCartItemsFail, UPDATE_CART_ITEMS, getCartItemsFail, getCartItemsSuccess,GET_CART_ITEMS,GET_CART_ITEMS_SUCCESS} from '../Redux/cartReducerCumActions'
+   ADD_CART_ITEMS, addCartItemsFail, addCartItemsSuccess,DELETE_CART_ITEMS,deleteCartItemsFail,deleteCartItemsSuccess, updateCartItemsSuccess, updateCartItemsFail, UPDATE_CART_ITEMS, getCartItemsFail, getCartItemsSuccess,GET_CART_CARTITEMS,GET_CART_CARTITEMS_SUCCESS, getCartcartItemsSuccess, getCartcartItemsFail, GET_CART_CARTITEMS1, getCartcartItems1Fail, getCartcartItems1Success, GET_CART_CARTITEMS2, getCartcartItems2Fail, getCartcartItems2Success, getCartcartItems3Success, getCartcartItems3Fail} from '../Redux/cartReducerCumActions'
 
 
 // FETCH ALL CART DATA
@@ -86,41 +86,63 @@ export function* watchUpdateToCart() {
     const {data} = yield call( getitmesList1 );
     console.log("saga",data);
 
-    yield put(getCartItemsSuccess(data?.data));
-   //  const {data1} = yield call( getitmesList2 );
-   //  console.log("saga",data1);
-
-   //  yield put(getCartItemsSuccess(data1?.data));
-   //  const {data2} = yield call( getitmesList3 );
-   //  console.log("saga",data2);
-
-   //  yield put(getCartItemsSuccess(data2?.data));
-   //  const {data3} = yield call( getitmesList4 );
-   //  console.log("saga",data3);
-   //  yield put(getCartItemsSuccess(data3?.data));
+    yield put(getCartcartItemsSuccess(data?.data));
+   
    } catch (e) {
-      yield put(getCartItemsFail(e));
+      yield put(getCartcartItemsFail(e));
    }
 }
 
 export function* watchCartItemList1() {
-   yield takeLatest(GET_CART_ITEMS, getCartItemsList);
+   yield takeLatest(GET_CART_CARTITEMS, getCartItemsList);
  }
  //----------------------------------------------//
  function* getCartItemsList1() {
    
    try { 
-    const {data1} = yield call( getitmesList2 );
-    console.log("saga",data1);
-    yield put(getCartItemsSuccess(data1?.data));
+    const {data} = yield call( getitmesList2 );
+    console.log("saga",data);
+    yield put(getCartcartItems1Success(data?.data));
 
    } catch (e) {
-      yield put(getCartItemsFail(e));
+      yield put(getCartcartItems1Fail(e));
    }
 }
 
 export function* watchCartItemList2() {
-   yield takeLatest(GET_CART_ITEMS, getCartItemsList1);
+   yield takeLatest(GET_CART_CARTITEMS1, getCartItemsList1);
  }
 
+ //--------------------------------------------//
+ function* getCartItemsList2() {
+   
+   try { 
+    const {data} = yield call(getitmesList4 );
+    console.log("saga",data);
+    yield put(getCartcartItems2Success(data?.data));
+
+   } catch (e) {
+      yield put(getCartcartItems2Fail(e));
+   }
+}
+
+export function* watchCartItemList3() {
+   yield takeLatest(GET_CART_CARTITEMS2, getCartItemsList2);
+ }
+ //--------------------------------------------//
+ function* getCartItemsList3() {
+   
+   try { 
+    const {data} = yield call(getitmesList3 );
+    console.log("saga",data);
+    yield put(getCartcartItems3Success(data?.data));
+
+   } catch (e) {
+      yield put(getCartcartItems3Fail(e));
+   }
+}
+
+export function* watchCartItemList4() {
+   yield takeLatest(GET_CART_CARTITEMS2, getCartItemsList3);
+ }
 
