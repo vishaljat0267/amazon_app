@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import '../cssCode/Style.css'
 import { BackTop } from 'antd';
 import { useState } from 'react/cjs/react.production.min';
+import LanguagePopover from '../../popovers/languagePopover'
 
 
 
@@ -66,10 +67,13 @@ export default function Footer() {
                                     <img className='header_logo' src='https://www.doorwaysva.org/wp-content/uploads/2019/06/amazon-logo.png' />
                                 </div>
                                 <div style={{ width: '20%',display:'flex',justifyContent:'center',alignItems:'center' }}>
-                                    <a href="" style={{border:'1px solid white',color:'white',display:'flex',justifyContent:'center',alignItems:'center',height:'70%',width:'70%'}}>English</a>
+                                    <a href="" style={{border:'1px solid white',color:'white',display:'flex',justifyContent:'center',alignItems:'center',height:'70%',width:'70%',backgroundColor:'#232f3e',textDecoration:'none'}}>English</a>
+                                  
                                 </div>
 
                             </div>
+                            
+
                             <div style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '10px', flexWrap: 'wrap', paddingTop: '30px' }}>
                                 <a href='#' style={{ color: 'white' }} className="ex5">Australia</a>
                                 <a href='#' style={{ color: 'white' }} className="ex5">Brazil</a>
@@ -92,29 +96,29 @@ export default function Footer() {
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', flexWrap: 'wrap' }}>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', }}>
                             <h4 style={{ color: 'white' }}>AbeBooks</h4>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Books,art</a>
-                            <a href='#' style={{ color: 'white' }} className="ex5">& Collection</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Books,art</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">& Collection</a>
 
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                             <h4 style={{ color: 'white' }}>Amazone web Service</h4>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Scalable cloud</a>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Computing Service</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Scalable cloud</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Computing Service</a>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                             <h4 style={{ color: 'white' }}>Audible</h4>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Download</a>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Audio Books</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Download</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Audio Books</a>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                             <h4 style={{ color: 'white' }}>DPReview</h4>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Digital</a>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Photography</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Digital</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Photography</a>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                             <h4 style={{ color: 'white' }}>IMDb</h4>
-                            <a href='#' style={{ color: 'white' }} className="ex5">Movies,TV</a>
-                            <a href='#' style={{ color: 'white' }} className="ex5">& Celebrities</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">Movies,TV</a>
+                            <a href='#' style={{ color: 'white' }} className="ex6">& Celebrities</a>
                         </div>
                     </div>
                 </div>
@@ -122,9 +126,9 @@ export default function Footer() {
                 <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', backgroundColor: '#131921', paddingTop: '40px' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
 
-                        <a href='#' style={{ color: 'white' }} className="ex5">Conditions of Use & Sale</a>
-                        <a href='#' style={{ color: 'white' }} className="ex5">Privacy notice</a>
-                        <a href='#' style={{ color: 'white' }} className="ex5">Interest-Based Ads</a>
+                        <a href='#' style={{ color: 'white' }} className="ex6">Conditions of Use & Sale</a>
+                        <a href='#' style={{ color: 'white' }} className="ex6">Privacy notice</a>
+                        <a href='#' style={{ color: 'white' }} className="ex6">Interest-Based Ads</a>
 
                         <h4 style={{ color: 'white' }}>@ 19996-2022, Amazone.com,inc. or its affiliates</h4>
                     </div>

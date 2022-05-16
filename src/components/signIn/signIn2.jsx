@@ -25,14 +25,11 @@ export default function SignIn2() {
         
          await axios.post(" https://tejinsan.herokuapp.com/login", { emailphone: n1, password: n2 })
             .then(response => {
-                // let res = response.data;
-                // let name=res.data.username
-                // let token=res.data.token
                 const res = response.data
                 console.log(res);
                 if (res.token) {
                     sessionStorage.setItem('token',res.token);
-                    navi('/dashboard');
+                    navi('/');
                     // navi('/dashboard',{state:name});
                   }
                   else {

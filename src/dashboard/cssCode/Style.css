@@ -65,5 +65,12 @@ a.ex1:active {
 a.ex5:hover,
 a.ex5:active {
   text-decoration: underline ;
-  
+
+  background-color: #232f3e;
+}
+a.ex6:hover,
+a.ex6:active {
+  text-decoration: underline ;
+
+  background-color: #131921;
 }

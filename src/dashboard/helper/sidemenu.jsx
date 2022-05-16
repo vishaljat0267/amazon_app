@@ -30,7 +30,7 @@ export default function Drawer1(props) {
       {/* <img style={{ height: '100%', width: '100%', top: '0px' }} src={Amazon} /> */}
       {/* <span> <Button className='btn' type="primary" onClick={showDrawer}> Open</Button></span> */}
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.2vw', color: 'white' }} onClick={showDrawer}>
-        <a className="ex1" style={{ color: 'white' }} >
+        <a className="ex1" style={{ color: 'white',textDecoration:'none' }} >
           All</a>
       </div>
 

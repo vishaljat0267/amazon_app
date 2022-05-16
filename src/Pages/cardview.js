@@ -8,6 +8,8 @@ import Dictionaries from "../images/dictionaries.png";
 import Fantasy from "../images/fantasy.png";
 import Horror from "../images/horror.png";
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import {getCartItems} from '../components/Redux/cartReducerCumActions'
 import {cardApi1,cardApi2,cardApi3,cardApi4} from '../services/getApi/getApi'
 const catCard = [Adventure, Fantasy, Horror, Dictionaries];
 
@@ -17,24 +19,36 @@ export default function Cardview() {
   const [data2, setData2] = useState([])
   const [data3, setData3] = useState([])
   const [data4, setData4] = useState([])
-
+  const dispatch = useDispatch();
+  // const cartitems = useSelector((state)=> console.log(state.Cart.cartitems));
+  const cartitems = useSelector((state)=>(state.Cart.cartitems));
+  
+  // setData(cartitems)
   useEffect(async () => {
-    await cardApi1().then(res => { setData(res.data.data) })
-    await cardApi2().then(res => { setData2(res.data.data) })
-    await cardApi3().then(res => { setData3(res.data.data) })
-    await cardApi4().then(res => { setData4(res.data.data) })
+    // await cardApi1().then(res => { setData(res.data.data) })
+    // await cardApi2().then(res => { setData2(res.data.data) })
+    
+    dispatch(getCartItems())
+    cartitems()
+  
+    // await cardApi3().then(res => { setData3(res.data.data) })
+    // await cardApi4().then(res => { setData4(res.data.data) })
 
   }, [])
-  console.log(data2, data1, data3, data4);
+  // console.log(data2, data1, data3, data4);
+  console.log(cartitems,"data");
+  console.log(cartitems,"data1");
+
 
 
 
 
   return (
+    // <></>
     <React.Fragment>
 
       <div className="cards">
-        {data4.map((val, key) => {
+        {cartitems?.map((val, key) => {
           return (
             <React.Fragment key={key}>
 
@@ -48,6 +62,7 @@ export default function Cardview() {
                 <div>
                   <h3><b>Price: {val.price}</b></h3>
                   <h6>{val.description}"</h6>
+                 
                 </div>
                 <Link to="/categories" state={"Comics"} className="link">
                   Shop Now
@@ -61,7 +76,7 @@ export default function Cardview() {
         <Card className="card">
           <h1>Shop By Category</h1>
           <div className="card-content">
-            {data1.map((d, id) => {
+            {cartitems?.map((d, id) => {
               if (id < 4) return (<React.Fragment key={id}>
                 <div style={{ display: 'flex', justifyContent: 'center', width: '50%', height: 'auto', flexDirection: 'column' }}>
                   <div>
@@ -90,7 +105,7 @@ export default function Cardview() {
         <Card className="card">
           <h1>Shop By Category</h1>
           <div className="card-content">
-            {data1.map((d, id) => {
+            {cartitems?.map((d, id) => {
               if (id < 4) {
                 return (<React.Fragment key={id}>
                   <div style={{ display: 'flex', justifyContent: 'center', width: '50%', height: 'auto', flexDirection: 'column' }}>
@@ -127,7 +142,7 @@ export default function Cardview() {
         <Card className="card">
           <h1>Shop By Category</h1>
           <div className="card-content">
-            {data2.map((d, id) => {
+            {cartitems?.map((d, id) => {
               if (id < 4) {
                 return (<React.Fragment key={id}>
                   <div style={{ display: 'flex', justifyContent: 'center', width: '50%', height: 'auto', flexDirection: 'column' }}>
@@ -159,7 +174,7 @@ export default function Cardview() {
         <Card className="card">
           <h1>Shop By Category</h1>
           <div className="card-content">
-            {data3.map((d, id) => {
+            {cartitems?.map((d, id) => {
               if (id < 4) {
                 return (<React.Fragment key={id}>
                   <div style={{ display: 'flex', justifyContent: 'center', width: '50%', height: 'auto', flexDirection: 'column' }}>

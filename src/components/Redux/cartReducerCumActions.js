@@ -23,7 +23,24 @@ export const deleteCartItems = (payload) => ({ type: DELETE_CART_ITEMS, payload}
 export const deleteCartItemsSuccess = (payload) => ({ type: DELETE_CART_ITEMS_SUCCESS, payload});
 export const deleteCartItemsFail = (payload=null) => ({ type: DELETE_CART_ITEMS_FAIL, payload});
 
+export const UPDATE_CART_ITEMS = "UPDATE_CART_ITEMS"
+export const UPDATE_CART_ITEMS_SUCCESS = "UPDATE_CART_ITEMS_SUCCESS";
+export const UPDATE_CART_ITEMS_FAIL = "UPDATE_CART_ITEMS_FAIL"
+
+export const updateCartItems = (payload) => ({ type: UPDATE_CART_ITEMS, payload});
+export const updateCartItemsSuccess = (payload) => ({ type: UPDATE_CART_ITEMS_SUCCESS, payload});
+export const updateCartItemsFail = (payload=null) => ({ type: UPDATE_CART_ITEMS_FAIL, payload});
+
+export const GET_CART_ITEMS_FAIL = "GET_CART_ITEMS_FAIL";
+export const GET_CART_ITEMS_SUCCESS = "GET_CART_ITEMS_SUCCESS";
+export const GET_CART_ITEMS = "GET_CART_ITEMS"
+
+export const getCartItemsSuccess = (payload) => ({ type: GET_CART_ITEMS_SUCCESS, payload });
+export const getCartItemsFail= (payload) => ({ type: GET_CART_ITEMS_FAIL, payload });
+export const getCartItems= (payload) => ({ type: GET_CART_ITEMS, payload });
+
 const initialState = {
+        cartitems:[],
         loading : true,
         items : [],
   }
@@ -83,10 +100,51 @@ case DELETE_CART_ITEMS:
             loading : false,
             items : payload
     }
+ //----------- UPDATE CART ITEMS-----------
+ case UPDATE_CART_ITEMS:
+        return {
+                loading : false,
+                items : payload
+        } 
+      case UPDATE_CART_ITEMS_SUCCESS:
+      return {
+              loading : true,
+              items : payload
+      } 
+      case UPDATE_CART_ITEMS_FAIL:
+        return {
+                loading : false,
+                items : payload
+        }
+
+        // ------------get items -----------------
+
+        case GET_CART_ITEMS:
+                return {
+                        loading : false,
+                        cartitems : payload
+                } 
+              case GET_CART_ITEMS_FAIL:
+                return {
+                        loading : false,
+                        cartitems : payload
+                } 
+                case GET_CART_ITEMS_SUCCESS:
+                  return {
+                //        ...state,cartitems:[...state.cartitems,payload],loading:true
+                loading : true,
+                cartitems : payload
+                  } 
+  
+
       default:
         return state
     }
   }
+
+ 
+
+  
   
   
   export default cart

@@ -1,79 +1,96 @@
 import React, { useEffect, useState } from 'react';
-import './signInpopover.css'
-import { Button, Popover, Tooltip } from 'antd';
+
+import { Button, Popover, Radio, Space, Tooltip } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
-import { useNavigate } from 'react-router-dom';
+import "./languagePopover.css"
+
+import { CaretDownOutlined } from '@ant-design/icons';
+
 export default function LanguagePopover(props) {
+  const [showPopover, setshowPopover] = useState(false)
+
  
- 
+
+  useEffect(() => {
+     props.toggle != null && setshowPopover(!showPopover)
+  }, [props.toggle])
+
+    // state = {
+    //     value: 1,
+    //   };
+    
+    //   onChange = e => {
+    //     console.log('radio checked', e.target.value);
+    //     this.setState({
+    //       value: e.target.value,
+    //     });
+    //   };
+    //   const { value } = this.state;
   
-  const text = (
-    <div style={{ width: "100%", display: "grid" }}>
+   
+  
+  const text1 = (
+    <div style={{ width: "100%", display: "grid", marginTop:'10px' }}>
      
-      <span style={{ placeSelf: 'center', fontSize: '0.8em' }}>New Customer?
-        <a style={{ color: "blue" }} href="#">&nbsp;Click here</a>
-      </span>
+      <Radio checked={true}>English</Radio>
+
     </div>
 
   )
+const content = (<>
+    <div style={{ width: "100%", display: "grid", marginTop:'5px',marginBottom:'5px', borderBottom:"1px #ddd solid", }}>
 
-  const content = (
-    <div style={{ width: '200px'}}>
-      <div style={{ display: 'grid', gridTemplateColumns: '225px 225px', gridTemplateRows: '300px' }}>
-       
-          <div style={{ display: 'flex', flexDirection: 'column', gap: "2px", paddingTop: '10px' }}>
+    <Radio.Group >
+    <Space direction="vertical">
+      <Radio value={1}>हिन्दी - HI</Radio>
+      <Radio value={2}>தமிழ் - TA</Radio>
+      <Radio value={3}>తెలుగు - TE</Radio>
+      <Radio value={4}>ಕನ್ನಡ - KN</Radio>
+      <Radio value={5}>മലയാളം - ML</Radio>
+      <Radio value={6}>বাংলা - BN</Radio>
+      <Radio value={7}>मराठी - MR</Radio>
+      <Radio value={8}>ಕನ್ನಡ - KN</Radio>
+        
+        {/* {value === 4 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null} */}
 
-            <h4>Your List</h4>
+    </Space>
+  </Radio.Group></div>
+  <div style={{marginTop:'10px',display: 'flex', flexDirection: 'row'}}>
+  <img className='header_flag' style={{ height: '2vh', width: '1.5vw', display: 'flex', flexDirection: 'row', marginTop: '5px' }} src='https://flagicons.lipis.dev/flags/4x3/in.svg' />
 
-            <a style={{ color: "#444" }} href='#'> Create a Wishlist</a>
-
-            <a style={{ color: "#444" }} href='#'>Wish from any website</a>
-            <a style={{ color: "#444" }} href='#'>Baby website</a>
-            <a style={{ color: "#444" }} href='#'>Baby website</a>
-            <a style={{ color: "#444" }} href='#'>Baby website</a>
-            <a style={{ color: "#444" }} href='#'>Discover Your Style </a>
-            <a style={{ color: "#444" }} href='#'>View Showroom</a>
-          </div>
-       
-       
+      <span><p> You are shopping on Amazon.in </p></span>
+     
       </div>
-    </div>
-  )
+      <div>
+      <span><p style={{color:'blue'}}>Change Country/Region</p></span></div>
+  
+  </>
+)
 
+ 
 
   return (
     <>
-      
-      <Popover placement="bottomRight"
-          
+  
+    
+      <Popover placement="bottom"
           style={{position :'relative', top:"-10px"}}
         trigger='hover'
-        title={text} content={content} >
-        <button style={{ border:'none',background:"none", width: '20%', display: 'flex', justifyContent: 'center', flexDirection: 'column', textAlign: 'center' }}>
-                        <a href="" className="ex1"
-                         style={{ display: 'flex', justifyContent: 'center', textAlign: 'center',
-                          flexDirection: 'column', height: '100%', width: '90%' }}>
-                        
-                        
-                       
-                         
-                          <img  className='header_flag'
-                             style={{ height: 'auto', width: '3vw', display: 'flex', marginTop: '0px' }}
-                            src='https://flagicons.lipis.dev/flags/4x3/in.svg' />
-                            <div style={{display:'flex',justifycontent:'center',marginLeft:'55px',marginTop:'-19px'}}>
-  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" color="" fill="white" className="bi bi-caret-down" viewBox="0 0 16 16" >
-  <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
-</svg>
-           </div> 
-            
-           
-                   
-                    </a>
-                    </button>
+        title={text1} content={content}  >
+        
+                    <div style={{ width: '19%', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+                        <a href="" className="ex1" style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', flexDirection: 'row', height: '85%', width: '80%', alignItems: 'center', gap: '4px' }}>
+                            <img className='header_flag' style={{ height: 'auto', width: '2vw', display: 'flex', flexDirection: 'row', marginTop: '' }} src='https://flagicons.lipis.dev/flags/4x3/in.svg' />
+                            <span style={{ display: 'flex', flexDirection: 'row', paddingTop: '10px', color: ''}}><CaretDownOutlined/> </span>  </a>
+
+                    </div>
+                  
+                    
+                  
       </Popover>
     
-      
+    
+
     </>
   );
 }
-
