@@ -109,22 +109,24 @@ const initialState = {
           }
   // -------------------------------------------------------
   //  --------DELETE TO CART -------------------------
-case DELETE_CART_ITEMS:
-    return {
-            loading : false,
-            items : payload
-    } 
-  case DELETE_CART_ITEMS_SUCCESS:
-  return {
-          loading : true,
-          items : payload
-  } 
-  case DELETE_CART_ITEMS_FAIL:
-    return {
-            loading : false,
-            items : payload
-    }
- //----------- UPDATE CART ITEMS-----------
+// case DELETE_CART_ITEMS:
+//     return {
+//             loading : false,
+//             items : payload
+//     } 
+//   case DELETE_CART_ITEMS_SUCCESS:
+//   return {
+//           loading : true,
+//           items : payload
+//   } 
+//   case DELETE_CART_ITEMS_FAIL:
+//     return {
+//             loading : false,
+//             items : payload
+//     }
+
+
+//----------- UPDATE CART ITEMS-----------
  case UPDATE_CART_ITEMS:
         return {
                 loading : false,
@@ -283,6 +285,39 @@ export const  allItems=(state = itemsState, action)=>{
     default:
         return state
     }
+  }
+
+  const deleteitems={
+    loading:true,
+     cartitems3:[]
+   
+    
+  
+  }
+  
+   export const  deleteitems1=(state = deleteitems, action)=>{
+    const { type, payload } = action;
+    console.log("allItemsreducers",type, payload);
+    switch (type) {
+              
+             case DELETE_CART_ITEMS:
+      return {
+              loading : false,
+              items : payload
+      } 
+    case DELETE_CART_ITEMS_SUCCESS:
+    return {
+            loading : true,
+            items : payload
+    } 
+    case DELETE_CART_ITEMS_FAIL:
+      return {
+              loading : false,
+              items : payload
+      }
+  default:
+    return state
+  }
   }
 
 
