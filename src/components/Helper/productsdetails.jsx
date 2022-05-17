@@ -29,20 +29,7 @@ console.log("ADD TO CART.................");
       dispatch(addCartItems(item))
       navi('/proceedNext',{ state: val })
 
-    //   await axios.post("https://tejinsan.herokuapp.com/addtocart", { "title": n1, "description": n2, "price": n3, "category": n4, "image": n5, "rating": n6 })
-    //     .then(response => {
-    //       let res = response.data;
-
-    //       console.log(res)
-
-
-    //     })
-    //     .catch(error => {
-    //       console.log("error", error)
-
-    //     });
-    // console.log("val", val);
-
+    
   }
 
  

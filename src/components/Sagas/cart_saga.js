@@ -9,7 +9,7 @@ function* fetchCartItemsList() {
    
    try { 
     const {data} = yield call(getAllCartItems);
-    console.log("vvvvvvvvvvvv",data?.length);
+   //  console.log("vvvvvvvvvvvv",data?.length);
     yield put(fetchCartItemsSuccess(data?.data));
    } catch (e) {
       yield put(fetchCartItemsFail(e));
@@ -26,10 +26,10 @@ export function* watchCartItemList() {
 // ADD TO CART
 function* addcartItemsList(payload){
    try{
-      console.log(">##########", payload);
+      // console.log(">##########", payload);
 
       const data = yield call(addNewItemToCart,payload);
-      console.log(">>>>>>>>>", data);
+      // console.log(">>>>>>>>>", data);
       yield put(fetchCartItems());
         }catch (e) {
            yield put(addCartItemsFail(e));
@@ -46,7 +46,7 @@ export function* watchAddToCart() {
 function* deletecartItemsList(payload){
    try{
       const data = yield call(deleteNewItemToCart,payload);
-      console.log(">>>>>>>>>", data);
+      // console.log(">>>>>>>>>", data);
           yield put(deleteCartItemsSuccess([])); 
           yield put(fetchCartItems()); // Dispatch Action
           
@@ -64,9 +64,9 @@ export function* watchDeleteToCart() {
 
  function* updatecartItemsList(payload){
    try{
-      console.log(payload);
+      // console.log(payload);
       const data = yield call(updateNewItemToCart,payload);
-      console.log(">>>>>>>>>", data);
+      // console.log(">>>>>>>>>", data);
           yield put(updateCartItemsSuccess([])); 
           yield put(fetchCartItems()); // Dispatch Action
           
@@ -84,7 +84,7 @@ export function* watchUpdateToCart() {
    
    try { 
     const {data} = yield call( getitmesList1 );
-    console.log("saga",data);
+   //  console.log("saga",data);
 
     yield put(getCartcartItemsSuccess(data?.data));
    
@@ -101,7 +101,7 @@ export function* watchCartItemList1() {
    
    try { 
     const {data} = yield call( getitmesList2 );
-    console.log("saga",data);
+   //  console.log("saga",data);
     yield put(getCartcartItems1Success(data?.data));
 
    } catch (e) {
@@ -118,7 +118,7 @@ export function* watchCartItemList2() {
    
    try { 
     const {data} = yield call(getitmesList4 );
-    console.log("saga",data);
+   //  console.log("saga",data);
     yield put(getCartcartItems2Success(data?.data));
 
    } catch (e) {
@@ -134,7 +134,7 @@ export function* watchCartItemList3() {
    
    try { 
     const {data} = yield call(getitmesList3 );
-    console.log("saga",data);
+   //  console.log("saga",data);
     yield put(getCartcartItems3Success(data?.data));
 
    } catch (e) {

@@ -19,6 +19,7 @@ export default function Layout(props) {
 
 
     const name = props.name
+    // console.log(name);
     const {items} = useSelector((state)=> state.cart);
     const dispatch = useDispatch(); 
     const [totalCartItems, setTotalCartItems] = useState(0);
@@ -79,7 +80,7 @@ export default function Layout(props) {
                 <div style={{ width: '25%', display: 'flex', height: '-webkit-fill-available' }}>
                     <div style={{ width: "35%", height: "90%", display: 'flex', justifyContent: 'start', alignItems: 'center', textAlign: 'center', marginTop: '2px' }}>
 
-                        <img className='header_logo' src='https://i0.wp.com/www.dafontfree.co/wp-content/uploads/2021/11/Amazon-Logo-Font-1-scaled.jpg?resize=2560%2C1578&ssl=1' />
+                        <img onClick={() => { navi('/') }} className='header_logo' src='https://i0.wp.com/www.dafontfree.co/wp-content/uploads/2021/11/Amazon-Logo-Font-1-scaled.jpg?resize=2560%2C1578&ssl=1' />
                     </div>
                     <LocationModal />
                 </div>

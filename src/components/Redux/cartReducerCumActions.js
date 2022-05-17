@@ -72,7 +72,7 @@ const initialState = {
   
  export const  cart=(state = initialState, action)=> {
     const { type, payload } = action;
-    console.log("OOOOOOOOOOO",type, payload);
+    // console.log("OOOOOOOOOOO",type, payload);
     switch (type) {
       // GET ALL CART ITEMS
       case FETCH_CART_ITEMS:
@@ -163,7 +163,7 @@ const initialState = {
  
 export const  allItems=(state = itemsState, action)=>{
         const { type, payload } = action;
-        console.log("allItemsreducers",type, payload);
+        // console.log("allItemsreducers",type, payload);
         switch (type) {
                 case GET_CART_CARTITEMS:
                 return {
@@ -196,7 +196,7 @@ export const  allItems=(state = itemsState, action)=>{
 
   export const  allItems1=(state = itemsState1, action)=>{
         const { type, payload } = action;
-        console.log("allItemsreducers",type, payload);
+        // console.log("allItemsreducers",type, payload);
         switch (type) {
                   
                   case GET_CART_CARTITEMS1:
@@ -229,7 +229,7 @@ export const  allItems=(state = itemsState, action)=>{
 
   export const  allItems2=(state = itemsState2, action)=>{
         const { type, payload } = action;
-        console.log("allItemsreducers",type, payload);
+        // console.log("allItemsreducers",type, payload);
         switch (type) {
                   
                   case GET_CART_CARTITEMS2:
@@ -263,7 +263,7 @@ export const  allItems=(state = itemsState, action)=>{
 
   export const  allItems3=(state = itemsState3, action)=>{
         const { type, payload } = action;
-        console.log("allItemsreducers",type, payload);
+        // console.log("allItemsreducers",type, payload);
         switch (type) {
                   
                   case GET_CART_CARTITEMS3:
@@ -287,6 +287,8 @@ export const  allItems=(state = itemsState, action)=>{
     }
   }
 
+  //-------------DELETE CART---------------------------------
+
   const deleteitems={
     loading:true,
      cartitems3:[]
@@ -297,7 +299,7 @@ export const  allItems=(state = itemsState, action)=>{
   
    export const  deleteitems1=(state = deleteitems, action)=>{
     const { type, payload } = action;
-    console.log("allItemsreducers",type, payload);
+    // console.log("allItemsreducers",type, payload);
     switch (type) {
               
              case DELETE_CART_ITEMS:

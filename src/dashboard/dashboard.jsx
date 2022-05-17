@@ -21,6 +21,7 @@ export default function Dashboard() {
         <>
           <HeaderMain />
           {/* <HeaderMain name={state}/> */}
+
           <div className="container" style={{ width:"100vw",backgroundColor: '#dddddd !important',overflowY:'scroll'}}>
                 <Header/>  
                 {/* <Drawer1/> */}

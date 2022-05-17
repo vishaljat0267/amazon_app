@@ -26,11 +26,12 @@ export default function SignIn2() {
          await axios.post(" https://tejinsan.herokuapp.com/login", { emailphone: n1, password: n2 })
             .then(response => {
                 const res = response.data
-                console.log(res);
+                // console.log(res);
+
                 if (res.token) {
                     sessionStorage.setItem('token',res.token);
-                    navi('/');
-                    // navi('/dashboard',{state:name});
+                    // navi('/');
+                    navi('/',{state:res.data.name});
                   }
                   else {
                     alert('invalid user')
