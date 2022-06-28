@@ -74,8 +74,8 @@ axios.interceptors.response.use(function (response) {
 
   
   {loader &&
-   <h1 style={{position:'fixed',top:'400px',marginLeft:'800px'}}>
-     <img style={{width:'160px',height:'180px'}} src='https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator.gif'/></h1>
+   <h1 style={{position:'fixed',top:'300px',marginLeft:'550px'}}>
+     <img style={{width:'130px',height:'150px'}} src='https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator.gif'/></h1>
  
    
   }

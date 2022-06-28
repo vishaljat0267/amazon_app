@@ -25,4 +25,9 @@ export const cardApi6 = async (id) =>{
     return await axios.delete(`${BASE_URL}/deleteitem/${id}`)
 }
 
+// export const getsignupDataList3 = async(newItem)=> {
+//     console.log(newItem.payload);
+
+//     return await axios.post(`${BASE_URL}/signup`,newItem.payload)
+// }
 

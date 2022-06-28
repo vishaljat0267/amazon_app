@@ -3,11 +3,14 @@ import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import AmazonLogo from '../../images/am.jpeg'
 import Input from '../signUp/customInput';
+import { useSelector, useDispatch } from 'react-redux';
+import { getLoginData} from '../../components/Redux/cartReducerCumActions'
 
 export default function SignIn2() {
 
    const navi = useNavigate()
     const {state}  = useLocation()
+    const dispatch = useDispatch();
     const emailphone=state.emailphone.value
 
     const [password, setPassword] = useState({
@@ -23,27 +26,31 @@ export default function SignIn2() {
         let n1 = emailphone
         let n2 = password.password.value
         
-         await axios.post(" https://tejinsan.herokuapp.com/login", { emailphone: n1, password: n2 })
-            .then(response => {
-                const res = response.data
-                // console.log(res);
+        //  await axios.post(" https://tejinsan.herokuapp.com/login", { emailphone: n1, password: n2 })
+        //     .then(response => {
+        //         const res = response.data
+        //         // console.log(res);
 
-                if (res.token) {
-                    sessionStorage.setItem('token',res.token);
-                    // navi('/');
-                    navi('/',{state:res.data.name});
-                  }
-                  else {
-                    alert('invalid user')
-                  }
+        //         if (res.token) {
+        //             sessionStorage.setItem('token',res.token);
+        //             // navi('/');
+        //             navi('/',{state:res.data.name});
+        //           }
+        //           else {
+        //             alert('invalid user')
+        //           }
                 
                 
 
-            })
-            .catch(error => {
-                console.log("error", error)
+        //     })
+        //     .catch(error => {
+        //         console.log("error", error)
              
-            });
+        //     });
+
+        const items = {" emailphone": n1, "password": n2}
+        dispatch( getLoginData(items))
+        navi('/');
 
     }
 

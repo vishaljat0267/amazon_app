@@ -39,3 +39,21 @@ export const  getitmesList3= async () =>{
 export const getitmesList4 = async () =>{
     return await axios.get(`${BASE_URL}/card4`)
 }
+
+
+export const getsignupDataList3 = async(newItem)=> {
+    console.log(newItem.payload);
+   
+    return await axios.post(`${BASE_URL}/signup`,newItem.payload)
+    
+
+}
+
+
+export const getloginDataList3 = async(newItem)=> {
+    console.log(newItem.payload);
+   
+    return await axios.post(`${BASE_URL}/login`,newItem.payload)
+    
+
+}

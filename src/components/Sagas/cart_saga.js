@@ -1,7 +1,8 @@
 import { call, put, takeEvery, takeLatest, } from 'redux-saga/effects'
-import {addNewItemToCart,getAllCartItems,deleteNewItemToCart, updateNewItemToCart, getitmesList1, getitmesList2, getitmesList3, getitmesList4} from '../Services/cartservice'
+import {addNewItemToCart,getAllCartItems,deleteNewItemToCart, updateNewItemToCart, getitmesList1, getitmesList2, getitmesList3, getitmesList4, getsignupDataList3} from '../Services/cartservice'
 import {FETCH_CART_ITEMS,fetchCartItemsFail,fetchCartItemsSuccess,fetchCartItems,
-   ADD_CART_ITEMS, addCartItemsFail, addCartItemsSuccess,DELETE_CART_ITEMS,deleteCartItemsFail,deleteCartItemsSuccess, updateCartItemsSuccess, updateCartItemsFail, UPDATE_CART_ITEMS, getCartItemsFail, getCartItemsSuccess,GET_CART_CARTITEMS,GET_CART_CARTITEMS_SUCCESS, getCartcartItemsSuccess, getCartcartItemsFail, GET_CART_CARTITEMS1, getCartcartItems1Fail, getCartcartItems1Success, GET_CART_CARTITEMS2, getCartcartItems2Fail, getCartcartItems2Success, getCartcartItems3Success, getCartcartItems3Fail} from '../Redux/cartReducerCumActions'
+   ADD_CART_ITEMS, addCartItemsFail, addCartItemsSuccess,DELETE_CART_ITEMS,deleteCartItemsFail,deleteCartItemsSuccess, updateCartItemsSuccess, updateCartItemsFail, UPDATE_CART_ITEMS, getCartItemsFail, getCartItemsSuccess,GET_CART_CARTITEMS,GET_CART_CARTITEMS_SUCCESS, getCartcartItemsSuccess, getCartcartItemsFail, GET_CART_CARTITEMS1, getCartcartItems1Fail, getCartcartItems1Success, GET_CART_CARTITEMS2, getCartcartItems2Fail, getCartcartItems2Success, getCartcartItems3Success, getCartcartItems3Fail, getSingupDataSuccess, getSingupDataFail, GET_SINGUP_DATA, getLoginpDataSuccess, getLoginDataFail, GET_LOGIN_DATA,} from '../Redux/cartReducerCumActions'
+
 
 
 // FETCH ALL CART DATA
@@ -146,3 +147,44 @@ export function* watchCartItemList4() {
    yield takeLatest(GET_CART_CARTITEMS2, getCartItemsList3);
  }
 
+//-------------signup data----------------------------
+
+function* getsignupDataLis(payload) {
+   
+   try { 
+    const {data} = yield call( getsignupDataList3,payload );
+   //  console.log("saga",data);
+
+    yield put(getSingupDataSuccess (data.payload));
+   
+   } catch (e) {
+      yield put(getSingupDataFail(e));
+   }
+}
+
+export function* watchSignupDataList1() {
+   yield takeLatest(GET_SINGUP_DATA,getsignupDataLis);
+ }
+
+
+ //=============================LOGIN================
+
+ function* getloginDataLis(payload) {
+   
+   try { 
+    const {data} = yield call( getsignupDataList3,payload );
+   //  console.log("saga",data);
+
+    yield put(getLoginpDataSuccess (data.payload));
+   
+   } catch (e) {
+      yield put(getLoginDataFail(e));
+   }
+}
+
+export function* watchLoginDataList1() {
+   yield takeLatest(GET_LOGIN_DATA,getsignupDataLis);
+ }
+
+
+ 

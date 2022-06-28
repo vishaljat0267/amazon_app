@@ -6,11 +6,14 @@ import { CaretRightOutlined } from '@ant-design/icons';
 import AmazonLogo from '../../images/am.jpeg'
 import Input from './customInput';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {getSingupData} from '../../components/Redux/cartReducerCumActions'
 const { Panel } = Collapse;
 
 
 export default function Signup() {
     const navi=useNavigate()
+    const dispatch = useDispatch();
 
 
     const [allValues, setAllValues] = useState({
@@ -31,18 +34,23 @@ export default function Signup() {
         let n4 = allValues.phone.value 
         let n2 = allValues.email.value
         let n3 = allValues.password.value
-         await axios.post(" https://tejinsan.herokuapp.com/signup", { name: n1,phone:n4, email: n2, password: n3 })
-            .then(response => {
-                let res = response.data;
+        //  await axios.post(" https://tejinsan.herokuapp.com/signup", { name: n1,phone:n4, email: n2, password: n3 })
+        //     .then(response => {
+        //         let res = response.data;
 
-                console.log(res)
-                navi('../verification',{state:allValues.email.value});
+        //         console.log(res)
+        //         navi('../verification',{state:allValues.email.value});
 
-            })
-            .catch(error => {
-                console.log("error", error)
+        //     })
+        //     .catch(error => {
+        //         console.log("error", error)
              
-            });
+        //     });
+        const items = { "name": n1,"phone":n4,"email": n2, "password": n3}
+        console.log("items",items);
+        dispatch( getSingupData(items))
+        navi('../verification',{state:allValues.email.value});
+
           
            
         
