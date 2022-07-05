@@ -1,17 +1,22 @@
 import { call, put, takeEvery, takeLatest, } from 'redux-saga/effects'
-import {addNewItemToCart,getAllCartItems,deleteNewItemToCart, updateNewItemToCart, getitmesList1, getitmesList2, getitmesList3, getitmesList4, getsignupDataList3} from '../Services/cartservice'
+import {addNewItemToCart,getAllCartItems,deleteNewItemToCart, updateNewItemToCart, getitmesList1, getitmesList2, getitmesList3, getitmesList4, getsignupDataList3, getloginDataList3} from '../Services/cartservice'
 import {FETCH_CART_ITEMS,fetchCartItemsFail,fetchCartItemsSuccess,fetchCartItems,
    ADD_CART_ITEMS, addCartItemsFail, addCartItemsSuccess,DELETE_CART_ITEMS,deleteCartItemsFail,deleteCartItemsSuccess, updateCartItemsSuccess, updateCartItemsFail, UPDATE_CART_ITEMS, getCartItemsFail, getCartItemsSuccess,GET_CART_CARTITEMS,GET_CART_CARTITEMS_SUCCESS, getCartcartItemsSuccess, getCartcartItemsFail, GET_CART_CARTITEMS1, getCartcartItems1Fail, getCartcartItems1Success, GET_CART_CARTITEMS2, getCartcartItems2Fail, getCartcartItems2Success, getCartcartItems3Success, getCartcartItems3Fail, getSingupDataSuccess, getSingupDataFail, GET_SINGUP_DATA, getLoginpDataSuccess, getLoginDataFail, GET_LOGIN_DATA,} from '../Redux/cartReducerCumActions'
 
 
 
 // FETCH ALL CART DATA
-function* fetchCartItemsList() {
+function* fetchCartItemsList(payload) {
+   console.log(">>>>>>>>",payload);
    
    try { 
-    const {data} = yield call(getAllCartItems);
-   //  console.log("vvvvvvvvvvvv",data?.length);
-    yield put(fetchCartItemsSuccess(data?.data));
+    const {data} = yield call(getAllCartItems,payload);
+console.log(data);
+    console.log("vvvvvvvvvvvv",data);
+    yield put(fetchCartItemsSuccess(data));
+   //  data.cartItems
+   console.log("ssssssssssss",data);
+
    } catch (e) {
       yield put(fetchCartItemsFail(e));
    }
@@ -45,10 +50,13 @@ export function* watchAddToCart() {
 // DELETE TO ITEMS CART
 
 function* deletecartItemsList(payload){
+   console.log("bbbbbbbbbb",payload);
+   // console.log("fffffffff",product_id,email);
    try{
       const data = yield call(deleteNewItemToCart,payload);
-      // console.log(">>>>>>>>>", data);
-          yield put(deleteCartItemsSuccess([])); 
+      console.log(">>>>>>>>>", payload);
+      console.log("wwwwwwwwwww",data);
+          yield put(deleteCartItemsSuccess,); 
           yield put(fetchCartItems()); // Dispatch Action
           
         }catch (e) {
@@ -65,10 +73,10 @@ export function* watchDeleteToCart() {
 
  function* updatecartItemsList(payload){
    try{
-      // console.log(payload);
+      console.log(payload);
       const data = yield call(updateNewItemToCart,payload);
-      // console.log(">>>>>>>>>", data);
-          yield put(updateCartItemsSuccess([])); 
+      console.log("hhhhhhhhhhhhhhhhhhh", data);
+          yield put(updateCartItemsSuccess,); 
           yield put(fetchCartItems()); // Dispatch Action
           
         }catch (e) {
@@ -155,7 +163,7 @@ function* getsignupDataLis(payload) {
     const {data} = yield call( getsignupDataList3,payload );
    //  console.log("saga",data);
 
-    yield put(getSingupDataSuccess (data.payload));
+    yield put(getSingupDataSuccess (data?.payload));
    
    } catch (e) {
       yield put(getSingupDataFail(e));
@@ -170,12 +178,16 @@ export function* watchSignupDataList1() {
  //=============================LOGIN================
 
  function* getloginDataLis(payload) {
-   
-   try { 
-    const {data} = yield call( getsignupDataList3,payload );
-   //  console.log("saga",data);
+    try { 
+    const {data} = yield call( getloginDataList3,payload );
+    console.log("saga",data);
 
-    yield put(getLoginpDataSuccess (data.payload));
+    yield put(getLoginpDataSuccess (data));
+    if(data.token){
+      sessionStorage.setItem('token',data.token);
+           
+
+  }
    
    } catch (e) {
       yield put(getLoginDataFail(e));
@@ -183,7 +195,7 @@ export function* watchSignupDataList1() {
 }
 
 export function* watchLoginDataList1() {
-   yield takeLatest(GET_LOGIN_DATA,getsignupDataLis);
+   yield takeLatest(GET_LOGIN_DATA,getloginDataLis);
  }
 
 

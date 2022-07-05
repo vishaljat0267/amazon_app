@@ -5,25 +5,17 @@ import React, { useState } from 'react'
 export default function LocationModal() {
 
     const [showModal, setShowModal] = useState(false)
-
-    // console.log(showModal);
     return (
         <>
-           
-         
-           
 
-<button  onClick={() => setShowModal(!showModal)} style={{ border:'none',background:"none", width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column', textAlign: 'center' }}>
-                        <a  className="ex1" style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', flexDirection: 'column', height: '100%', width: '90%' }}>
-                            <span style={{ fontSize: '1vw', color: 'white' }}><EnvironmentOutlined/>Hello</span>
-                            <span style={{ fontFamily: 'inherit', fontSize: '1.2vw', color: 'white' }}> Know your Location</span></a>
-                    </button>
-    
-      
-        
-            <Modal 
+            <button onClick={() => setShowModal(!showModal)} style={{ border: 'none', background: "none", width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column', textAlign: 'center' }}>
+                <a className="ex1" style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', flexDirection: 'column', height: '100%', width: '90%' }}>
+                    <span style={{ fontSize: '1vw', color: 'white' }}><EnvironmentOutlined />Hello</span>
+                    <span style={{ fontFamily: 'inherit', fontSize: '1.2vw', color: 'white' }}> Know your Location</span></a>
+            </button>
+            <Modal
                 closable={false}
-                bodyStyle={{scrollbarWidth:"none", padding: "0px", height: "240px",  borderRadius: "30px" }}
+                bodyStyle={{ scrollbarWidth: "none", padding: "0px", height: "240px", borderRadius: "30px" }}
                 centered
                 maskClosable={true}
                 onCancel={() => setShowModal(!showModal)}
@@ -56,24 +48,25 @@ export default function LocationModal() {
 
 
                     <div style={{ display: "flex", justifyContent: "center" }}><p style={{
-                    width: "100%", marginTop: "20px",
-                    textAlign: "center",
-                    borderBottom: "1px solid lightgray",
-                    lineHeight: "0.1em",
-                    margin: "10px 0 20px"
-                }}><a style={{
-                    background: "#fff", color: "gray", fontSize: '0.8em',
-                    padding: "0 10px"
-                }}>or enter an Indian pincode </a></p></div>
+                        width: "100%", marginTop: "20px",
+                        textAlign: "center",
+                        borderBottom: "1px solid lightgray",
+                        lineHeight: "0.1em",
+                        margin: "10px 0 20px"
+                    }}><a style={{
+                        background: "#fff", color: "gray", fontSize: '0.8em',
+                        padding: "0 10px"
+                    }}>or enter an Indian pincode </a></p></div>
 
 
 
                     <div style={{ display: 'flex', gap: "10px", marginBottom: "20px" }}>
-                        <input type="text" 
-                        style={{ width: "60%", height: "35px",
-                            border: "1px solid gray"
+                        <input type="text"
+                            style={{
+                                width: "60%", height: "35px",
+                                border: "1px solid gray"
 
-                        }} />
+                            }} />
                         <button
                             onClick={() => { setShowModal(!showModal) }}
 

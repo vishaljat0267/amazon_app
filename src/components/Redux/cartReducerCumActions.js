@@ -3,9 +3,9 @@ export const FETCH_CART_ITEMS_FAIL = "FETCH_CART_ITEMS_FAIL";
 export const FETCH_CART_ITEMS_SUCCESS = "FETCH_CART_ITEMS_SUCCESS";
 export const FETCH_CART_ITEMS = "FETCH_CART_ITEMS"
 
-export const fetchCartItemsSuccess = (payload) => ({ type: FETCH_CART_ITEMS_SUCCESS, payload });
-export const fetchCartItemsFail = (payload) => ({ type: FETCH_CART_ITEMS_FAIL, payload });
 export const fetchCartItems = (payload) => ({ type: FETCH_CART_ITEMS, payload });
+export const fetchCartItemsSuccess = (payload) => ({ type: FETCH_CART_ITEMS_SUCCESS, payload });
+export const fetchCartItemsFail = (payload = null) => ({ type: FETCH_CART_ITEMS_FAIL, payload });
 
 export const ADD_CART_ITEMS = "ADD_CART_ITEMS"
 export const ADD_CART_ITEMS_SUCCESS = "ADD_CART_ITEMS_SUCCESS";
@@ -316,7 +316,7 @@ const deleteitems = {
 
 export const deleteitems1 = (state = deleteitems, action) => {
   const { type, payload } = action;
-  // console.log("allItemsreducers",type, payload);
+  console.log("allItemsreducers", type, payload);
   switch (type) {
 
     case DELETE_CART_ITEMS:
@@ -352,9 +352,9 @@ const signupdata = {
 
 export const signupdata1 = (state = signupdata, action) => {
   const { type, payload } = action;
-  
-  
-  console.log(">>>>>>>>>>>",action); 
+
+
+  // console.log(">>>>>>>>>>>",action); 
   switch (type) {
 
     case GET_SINGUP_DATA:
@@ -372,7 +372,7 @@ export const signupdata1 = (state = signupdata, action) => {
         loading: false,
         items: payload
       }
-      default:
+    default:
       return state
   }
 }
@@ -384,35 +384,33 @@ const loginupdata = {
   loading: true,
   items: []
 
-
-
 }
 
 export const loginpdata1 = (state = loginupdata, action) => {
   const { type, payload } = action;
-  
-  
-  console.log(">>>>>>>>>>>",action); 
+
+
+  console.log(">>>>>>>>>>>", payload);
   switch (type) {
 
-     case GET_LOGIN_DATA:
-        return {
-          loading: true,
-          items: payload
-        }
-      case GET_LOGIN_DATA_SUCCESS:
-        return {
-          loading: true,
-          items: payload
-        }
-      case GET_LOGIN_DATA_FAIL:
-        return {
-          loading: false,
-          items: payload
-        }
+    case GET_LOGIN_DATA:
+      return {
+        loading: true,
+        items: payload
+      }
+    case GET_LOGIN_DATA_SUCCESS:
+      return {
+        loading: true,
+        items: payload.data
+      }
+    case GET_LOGIN_DATA_FAIL:
+      return {
+        loading: false,
+        items: payload
+      }
 
-        
-        default:
+
+    default:
       return state
   }
 }

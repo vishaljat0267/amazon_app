@@ -2,10 +2,9 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react'
 import './carouselss.css'
 
-import { cardApi4 } from '../services/getApi/getApi';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {getCartcartItems2} from '../components/Redux/cartReducerCumActions'
+import { getCartcartItems2 } from '../components/Redux/cartReducerCumActions'
 
 
 export default function Carouselss(props) {
@@ -22,18 +21,12 @@ export default function Carouselss(props) {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 1470
   }
-  // const [data1, setData] = useState([])
-  // useEffect(async () => {
-  //   await cardApi4().then(res => { setData(res.data.data) })
-  // }, []);
- 
-  const cartitems2 = useSelector((state)=>(state. allItems2.cartitems2));
-  
-  
-  // setData(cartitems)
-  useEffect( () => {
-     dispatch(getCartcartItems2())
-    }, [])
+
+  const cartitems2 = useSelector((state) => (state.allItems2.cartitems2));
+
+  useEffect(() => {
+    dispatch(getCartcartItems2())
+  }, [])
 
   return (
     <>
@@ -47,7 +40,7 @@ export default function Carouselss(props) {
         <div id="slider" style={{ position: '' }}>
           {
 
-cartitems2?.map((val, id) => {
+            cartitems2?.map((val, id) => {
               if (id < 30)
 
 
@@ -79,16 +72,7 @@ cartitems2?.map((val, id) => {
             onClick={slideRight}>
             <RightOutlined />
           </button>
-
-
         </div>
-
-        {/* <button className='right-slider-icon' style={{ opacity: '0.5', backgroundColor: '#fff', minHeight: '104px', minWidth: '47px',position:'absolute',left:'96%',top:'40%'}}
-          onClick={slideRight}>
-          <RightOutlined />
-        </button> */}
-
-
       </div>
 
     </>

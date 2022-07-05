@@ -20,7 +20,7 @@ export default function Verification() {
     let n1 = state
     let n2 = v_code
 
-    await axios.patch("https://tejinsan.herokuapp.com/verification", { email: n1, verificationCode: n2 })
+    await axios.patch("https://herokuawataar.herokuapp.com/verification", { email: n1, verificationCode: n2 })
       .then(response => {
         let res = response.data;
         console.log(res);

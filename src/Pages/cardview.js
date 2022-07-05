@@ -9,8 +9,7 @@ import Fantasy from "../images/fantasy.png";
 import Horror from "../images/horror.png";
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import {getCartcartItems,getCartcartItems1, getCartcartItems2, getCartcartItems3} from '../components/Redux/cartReducerCumActions'
-import {cardApi1,cardApi2,cardApi3,cardApi4} from '../services/getApi/getApi'
+import { getCartcartItems, getCartcartItems1, getCartcartItems2, getCartcartItems3 } from '../components/Redux/cartReducerCumActions'
 const catCard = [Adventure, Fantasy, Horror, Dictionaries];
 
 export default function Cardview() {
@@ -21,36 +20,24 @@ export default function Cardview() {
   const [data4, setData4] = useState([])
   const dispatch = useDispatch();
 
-  
-  const cartitems = useSelector((state)=>(state. allItems.cartitems));
-  const cartitems1 = useSelector((state)=>(state. allItems1.cartitems1));
-  const cartitems2 = useSelector((state)=>(state. allItems2.cartitems2));
-  const cartitems3 = useSelector((state)=>(state. allItems3.cartitems3));
 
-  // const cartitems = useSelector((state)=> console.log(state.cartitems));
+  const cartitems = useSelector((state) => (state.allItems.cartitems));
+  const cartitems1 = useSelector((state) => (state.allItems1.cartitems1));
+  const cartitems2 = useSelector((state) => (state.allItems2.cartitems2));
+  const cartitems3 = useSelector((state) => (state.allItems3.cartitems3));
+
+  useEffect(() => {
   
-  // setData(cartitems)
-  useEffect( () => {
-    // await cardApi1().then(res => { setData(res.data.data) })
-    // await cardApi2().then(res => { setData2(res.data.data) })
-    
+
     dispatch(getCartcartItems())
     dispatch(getCartcartItems1())
     dispatch(getCartcartItems2())
     dispatch(getCartcartItems3())
-  
-  
-    // await cardApi3().then(res => { setData3(res.data.data) })
-    // await cardApi4().then(res => { setData4(res.data.data) })
 
   }, [])
- 
-  // console.log(cartitems,"data");
-  // console.log(cartitems1,"data");
 
-
- return (
-    // <></>
+  return (
+   
     <React.Fragment>
 
       <div className="cards">
@@ -68,7 +55,7 @@ export default function Cardview() {
                 <div>
                   <h3><b>Price: {val.price}</b></h3>
                   <h6>{val.description}"</h6>
-                 
+
                 </div>
                 <Link to="/categories" state={"Comics"} className="link">
                   Shop Now

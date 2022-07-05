@@ -8,19 +8,20 @@ import Signup from './components/signUp/signUp';
 import SignIn from './components/signIn/signIn';
 import HomePage from './Pages/homePage';
 import SignIn2 from './components/signIn/signIn2';
-import SigninPopover from './popovers/signinPopover';
 import { useRoutes } from 'react-router-dom';
 import Verification from './components/verificationCode/verification';
 import Productsdetails from './components/Helper/productsdetails';
 import Container from './Pages/container';
-import Drawer1 from './dashboard/helper/sidemenu';
+
 
 import Cardshow from './components/Helper/cardshow';
 import axios from 'axios';
-import { Spin, Space } from 'antd';
+
 import ProccedNext from './components/Helper/proccedNext';
 
+
  export default function Main() {
+  
   
   const [loader, setLoader] = useState(false)
 
@@ -42,6 +43,7 @@ axios.interceptors.response.use(function (response) {
   setLoader(false)
    
     return response;
+   
   }, function (error) {
   setLoader(false)
 

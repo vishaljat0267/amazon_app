@@ -2,20 +2,16 @@ import react from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../cssCode/Style.css'
 import { BackTop } from 'antd';
-import { useState } from 'react/cjs/react.production.min';
-import LanguagePopover from '../../popovers/languagePopover'
-
-
 
 
 export default function Footer() {
-    const navi=useNavigate()
-   
+    const navi = useNavigate()
+
     return (
         <>
-            <div style={{ width: '100%', display: 'flex', flexDirection: 'column',  justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <div style={{ backgroundColor: '#374754', height: '10vh', width: '100%', justifyContent: 'center', display: 'flex' }}>
-                    <a style={{width:'100%',backgroundColor:'#374754',display:'flex',justifyContent:'center',alignItems:'center',color:'white'}}  >Back To Top</a>
+                    <a style={{ width: '100%', backgroundColor: '#374754', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}  >Back To Top</a>
                 </div>
 
 
@@ -66,13 +62,13 @@ export default function Footer() {
                                 <div style={{ width: '22%' }}>
                                     <img className='header_logo' src='https://www.doorwaysva.org/wp-content/uploads/2019/06/amazon-logo.png' />
                                 </div>
-                                <div style={{ width: '20%',display:'flex',justifyContent:'center',alignItems:'center' }}>
-                                    <a href="" style={{border:'1px solid white',color:'white',display:'flex',justifyContent:'center',alignItems:'center',height:'70%',width:'70%',backgroundColor:'#232f3e',textDecoration:'none'}}>English</a>
-                                  
+                                <div style={{ width: '20%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <a href="" style={{ border: '1px solid white', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70%', width: '70%', backgroundColor: '#232f3e', textDecoration: 'none' }}>English</a>
+
                                 </div>
 
                             </div>
-                            
+
 
                             <div style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '10px', flexWrap: 'wrap', paddingTop: '30px' }}>
                                 <a href='#' style={{ color: 'white' }} className="ex5">Australia</a>

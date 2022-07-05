@@ -1,56 +1,36 @@
-import axios from 'axios';
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import AmazonLogo from '../../images/am.jpeg'
 import Input from '../signUp/customInput';
 import { useSelector, useDispatch } from 'react-redux';
-import { getLoginData} from '../../components/Redux/cartReducerCumActions'
+import { getLoginData } from '../../components/Redux/cartReducerCumActions'
 
 export default function SignIn2() {
 
-   const navi = useNavigate()
-    const {state}  = useLocation()
+    const navi = useNavigate()
+    const { state } = useLocation()
     const dispatch = useDispatch();
-    const emailphone=state.emailphone.value
+    const emailphone = state.emailphone.value
 
     const [password, setPassword] = useState({
-        password:{value:"",isValid:""}
+        password: { value: "", isValid: "" }
     })
-    
-    const inputContent=(key,value,isValid)=>{
+
+    const inputContent = (key, value, isValid) => {
         setPassword((password) => ({ ...password, [key]: { value, isValid } }))
     }
 
-    const handleClick=async(e)=>{
+    const handleClick = async (e) => {
         e.preventDefault();
         let n1 = emailphone
         let n2 = password.password.value
-        
-        //  await axios.post(" https://tejinsan.herokuapp.com/login", { emailphone: n1, password: n2 })
-        //     .then(response => {
-        //         const res = response.data
-        //         // console.log(res);
 
-        //         if (res.token) {
-        //             sessionStorage.setItem('token',res.token);
-        //             // navi('/');
-        //             navi('/',{state:res.data.name});
-        //           }
-        //           else {
-        //             alert('invalid user')
-        //           }
-                
-                
+        const items = { "emailphone": n1, "password": n2 }
+        dispatch(getLoginData(items))
+        setTimeout(() => {
+            navi('/');
 
-        //     })
-        //     .catch(error => {
-        //         console.log("error", error)
-             
-        //     });
-
-        const items = {" emailphone": n1, "password": n2}
-        dispatch( getLoginData(items))
-        navi('/');
+        }, 3000);
 
     }
 
@@ -68,15 +48,15 @@ export default function SignIn2() {
 
 
                     <h2 style={{ height: "6px", fontWeight: "500", fontSize: "30px" }}>Sign-In</h2>
-                    <div style={{marginTop:"20px"}}>
-                        <span style={{fontWeight:"600"}}>
-                        {state.emailphone.value}<span ><a style={{color:"#0066c0"}} >&nbsp;Change</a></span>
+                    <div style={{ marginTop: "20px" }}>
+                        <span style={{ fontWeight: "600" }}>
+                            {state.emailphone.value}<span ><a style={{ color: "#0066c0" }} >&nbsp;Change</a></span>
                         </span>
-                        </div>
+                    </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-                        <div style={{display:"-webkit-flex",justifyContent:'space-between',width:'100%',fontSize:".9em"}}>
+                        <div style={{ display: "-webkit-flex", justifyContent: 'space-between', width: '100%', fontSize: ".9em" }}>
                             <b >Password</b>
-                            <a style={{color:"#0066c0" ,fontWeight:"500"}}>forgot password</a>
+                            <a style={{ color: "#0066c0", fontWeight: "500" }}>forgot password</a>
                         </div>
                         <Input
                             type='password'
@@ -108,12 +88,13 @@ export default function SignIn2() {
             }}>New to Amazon?</a></p></div>
             <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                 <button
-                onClick={()=>{navi('/signup')}}
-                 style={{width: "350px", height: "29px", border: "1px solid lightgray", borderRadius: "2px",
-                    boxShadow: "0 1px 0 rgb(255 ,255, 255 / 60%) inset",
-                    borderRadius: "2px",
-                    backgroundColor: "linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);"
-                }}>Create your Amazon Account</button>
+                    onClick={() => { navi('/signup') }}
+                    style={{
+                        width: "350px", height: "29px", border: "1px solid lightgray", borderRadius: "2px",
+                        boxShadow: "0 1px 0 rgb(255 ,255, 255 / 60%) inset",
+                        borderRadius: "2px",
+                        backgroundColor: "linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);"
+                    }}>Create your Amazon Account</button>
 
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState ,state} from 'react';
+import React, { useState, state } from 'react';
 import { Collapse } from 'antd';
 import 'antd/dist/antd.css';
 import { CaretRightOutlined } from '@ant-design/icons';
@@ -6,8 +6,6 @@ import AmazonLogo from '../../images/am.jpeg'
 import Input from '../signUp/customInput';
 import { useNavigate, useParams } from 'react-router-dom';
 const { Panel } = Collapse;
-
-
 export default function Login1() {
 
     const navi = useNavigate()
@@ -18,10 +16,9 @@ export default function Login1() {
         setEmailPhone((emailPhone) => ({ ...emailPhone, [key]: { value, isValid } }))
     }
 
-    const handleClick =()=>{
-        if(!emailPhone.emailphone.isValid )
-           {navi('/signIn2',{state:emailPhone})}
-        else return 
+    const handleClick = () => {
+        if (!emailPhone.emailphone.isValid) { navi('/signIn2', { state: emailPhone }) }
+        else return
     }
     return (
         <>
@@ -47,12 +44,14 @@ export default function Login1() {
                                 style={{ height: "2em", border: "1px solid gray" }}></Input>
                             {emailPhone.emailphone.isValid && <small style={{ color: "red" }}> <i>enter valid email or phone</i> </small>}
                         </div>
-                        <button 
-                        onClick={handleClick}
-                        style={{ height: "2.5em",
-                         background: "linear-gradient(to bottom,#f8e3ad,#EEBA37)", border: "1px solid #c89411" }}
-                         >Continue
-                         </button>
+                        <button
+                            onClick={handleClick}
+                            style={{
+                                height: "2.5em",
+                                background: "linear-gradient(to bottom,#f8e3ad,#EEBA37)", border: "1px solid #c89411"
+                            }}
+                        >Continue
+                        </button>
                         <div style={{ display: "flex", flexWrap: "wrap", width: "100%", heigth: "auto" }}>
                             <p style={{ fontSize: "0.8em", marginTop: '0px' }}>By continuing, you agree to Amazon's <span
                                 style={{ color: "blue" }}>
@@ -71,16 +70,8 @@ export default function Login1() {
                                 </Panel>
 
                             </Collapse>
-
-
-
                         </div>
-
                     </div>
-
-
-
-
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "center" }}><p style={{
@@ -99,7 +90,7 @@ export default function Login1() {
                         boxShadow: "0 1px 0 rgb(255 ,255, 255 / 60%) inset",
                         borderRadius: "2px",
                         backgroundColor: "-internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59))"
-                    }} onClick={()=>{navi('../signup')}}>Create your Amazon Account</button>
+                    }} onClick={() => { navi('../signup') }}>Create your Amazon Account</button>
 
                 </div>
             </div>

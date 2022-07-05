@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-// import './drawer1.css';
 import '../cssCode/menu.css';
-// import Data from '../subsidemenu/data.json'
 import Data from './data.json'
 import { Drawer, Button, Menu } from 'antd';
 import Icon, { UserOutlined, RightOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import SubMenu from 'antd/lib/menu/SubMenu';
-// import Amazon from './amazon.jpg'
-// import Header1 from '../subsidemenu/dash/helper/header1';
 
 export default function Drawer1(props) {
-  // console.log(props)
+
   const [id, setId] = useState('')
   const [openDrawer, setopenDrawer] = useState(false)
   const [openSubDrawer, setopenSubDrawer] = useState(null)
@@ -26,11 +22,8 @@ export default function Drawer1(props) {
 
   return (
     <>
-
-      {/* <img style={{ height: '100%', width: '100%', top: '0px' }} src={Amazon} /> */}
-      {/* <span> <Button className='btn' type="primary" onClick={showDrawer}> Open</Button></span> */}
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.2vw', color: 'white' }} onClick={showDrawer}>
-        <a className="ex1" style={{ color: 'white',textDecoration:'none' }} >
+        <a className="ex1" style={{ color: 'white', textDecoration: 'none' }} >
           All</a>
       </div>
 

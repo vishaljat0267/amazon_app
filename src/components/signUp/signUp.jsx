@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import { Collapse } from 'antd';
 import 'antd/dist/antd.css';
-import { CaretRightOutlined } from '@ant-design/icons';
+
 import AmazonLogo from '../../images/am.jpeg'
 import Input from './customInput';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {getSingupData} from '../../components/Redux/cartReducerCumActions'
+import { getSingupData } from '../../components/Redux/cartReducerCumActions'
 const { Panel } = Collapse;
-
-
 export default function Signup() {
-    const navi=useNavigate()
+    const navi = useNavigate()
     const dispatch = useDispatch();
 
 
@@ -20,41 +18,24 @@ export default function Signup() {
         Name: { value: "", isValid: "" },
         phone: { value: "", isValid: "" },
         email: { value: "", isValid: "" },
-        password :{value:"",isValid:""},
-        
+        password: { value: "", isValid: "" },
+
     })
-  
-    const inputContent=(key,value,isValid)=>{
-              setAllValues((allValues)=>({...allValues,[key]:{value,isValid}}))
+
+    const inputContent = (key, value, isValid) => {
+        setAllValues((allValues) => ({ ...allValues, [key]: { value, isValid } }))
     }
     console.log(allValues);
     const handleSubmit = async (e) => {
         e.preventDefault();
         let n1 = allValues.Name.value
-        let n4 = allValues.phone.value 
+        let n4 = allValues.phone.value
         let n2 = allValues.email.value
         let n3 = allValues.password.value
-        //  await axios.post(" https://tejinsan.herokuapp.com/signup", { name: n1,phone:n4, email: n2, password: n3 })
-        //     .then(response => {
-        //         let res = response.data;
-
-        //         console.log(res)
-        //         navi('../verification',{state:allValues.email.value});
-
-        //     })
-        //     .catch(error => {
-        //         console.log("error", error)
-             
-        //     });
-        const items = { "name": n1,"phone":n4,"email": n2, "password": n3}
-        console.log("items",items);
-        dispatch( getSingupData(items))
-        navi('../verification',{state:allValues.email.value});
-
-          
-           
-        
-        
+        const items = { "name": n1, "phone": n4, "email": n2, "password": n3 }
+        console.log("items", items);
+        dispatch(getSingupData(items))
+        navi('../verification', { state: allValues.email.value });
     }
 
     return (
@@ -76,23 +57,23 @@ export default function Signup() {
                                 inputContent={inputContent}
                                 placeholder="Name..."
                                 style={{ height: "2em", border: "1px solid black", borderRadius: "4px" }}></Input>
-                                {allValues.Name.isValid && <small style={{color:"red"}}> <i>enter name</i> </small>}
+                            {allValues.Name.isValid && <small style={{ color: "red" }}> <i>enter name</i> </small>}
 
                         </div>
 
-                        <div style={{ display: "flex", flexDirection: "column", gap: "3px"}}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
                             <b style={{ fontSize: "0.9em" }}>Mobile Number </b>
                             <Input type="text"
-                            inputContent={inputContent}
+                                inputContent={inputContent}
                                 placeholder="Phone..."
                                 name="phone"
                             ></Input>
-                             {allValues.phone.isValid && <small style={{color:"red"}}> <i>enter valid phone</i> </small>}
+                            {allValues.phone.isValid && <small style={{ color: "red" }}> <i>enter valid phone</i> </small>}
 
 
                         </div>
 
-                        
+
 
                         <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
                             <b style={{ fontSize: "0.9em" }}>Email</b>
@@ -100,7 +81,7 @@ export default function Signup() {
                                 inputContent={inputContent}
                                 name="email"
                                 placeholder='Email'></Input>
-                            {allValues.email.isValid &&  <small style={{color:"red"}}> <i>enter valid email</i> </small>}
+                            {allValues.email.isValid && <small style={{ color: "red" }}> <i>enter valid email</i> </small>}
                         </div>
                         <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
                             <b style={{ fontSize: "0.9em" }}>Password</b>
@@ -109,7 +90,7 @@ export default function Signup() {
                                 name="password"
                                 placeholder='At least 6 caracters'></Input>
                             <b style={{ fontSize: "0.8em" }}><i>i</i>  Passwords must be at least 6 characters.</b>
-                            {allValues.password.isValid &&  <small style={{color:"red"}}> <i>enter strong password</i> </small>}
+                            {allValues.password.isValid && <small style={{ color: "red" }}> <i>enter strong password</i> </small>}
                         </div>
 
                         <button style={{ height: "2.5em", background: "linear-gradient(to bottom,#f8e3ad,#EEBA37)", border: "1px solid #c89411", borderRadius: "4px" }} onClick={handleSubmit}>Create Account</button>
@@ -120,15 +101,15 @@ export default function Signup() {
                             </span></p>
 
                             <div style={{
-                                display: "flex", justifyContent: "center", width: "100%", height: '4em',flexDirection:"column",
+                                display: "flex", justifyContent: "center", width: "100%", height: '4em', flexDirection: "column",
                                 alignItems: "center", background: "linear-gradient(to bottom,rgba(0,0,0,.14),rgba(0,0,0,.06) 0px,transparent)"
                             }}>
-                                 <div style={{ width: "100%", textAlign: "start", fontSize: "0.9em" }}>Already have an account?<a style={{ color: " #0066c0", }}>Sign in</a> </div>
-                            <div style={{ width: "100%", textAlign: "start", fontSize: "0.9em" }}>Buying for work?<a style={{ color: " #0066c0", }}>Create a free business account</a>
-                            </div>
+                                <div style={{ width: "100%", textAlign: "start", fontSize: "0.9em" }}>Already have an account?<a style={{ color: " #0066c0", }}>Sign in</a> </div>
+                                <div style={{ width: "100%", textAlign: "start", fontSize: "0.9em" }}>Buying for work?<a style={{ color: " #0066c0", }}>Create a free business account</a>
+                                </div>
                             </div>
 
-                           
+
                         </div>
                     </div>
                 </div>
