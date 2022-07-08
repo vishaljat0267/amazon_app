@@ -19,7 +19,7 @@ export default function SignIn2() {
     const inputContent = (key, value, isValid) => {
         setPassword((password) => ({ ...password, [key]: { value, isValid } }))
     }
-
+    const token = sessionStorage.getItem("token");
     const handleClick = async (e) => {
         e.preventDefault();
         let n1 = emailphone
@@ -30,9 +30,16 @@ export default function SignIn2() {
         setTimeout(() => {
             navi('/');
 
-        }, 3000);
-
-    }
+        }, 2000);
+//        if(token){
+//             setTimeout(() => {
+//             navi('/');
+// }, 2000);
+//            }
+//            else {
+//             alert('invalid user')
+//           }
+       }
 
     return (
         <><div style={{ height: "auto", paddingBottom: "15px" }}>

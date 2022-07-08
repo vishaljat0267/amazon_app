@@ -10,9 +10,10 @@ export const addNewItemToCart = async (newItem) => {
     return await axios.post(`${BASE_URL}/addtocart`, newItem.payload)
 }
 
-export const getAllCartItems = async (newItem) => {
-    console.log("mmmmmmmm", newItem.payload);
-    return await axios.post(`${BASE_URL}/cardShow`, newItem.payload)
+export const getAllCartItems = async () => {
+    const token = sessionStorage.getItem('token');
+
+    return await axios.get(`${BASE_URL}/cardShow`, { headers: { "Authorization": `${token}` } })
 
 
 }
@@ -29,7 +30,7 @@ export const updateNewItemToCart = async (item) => {
     const { payload } = item
     const { email, product_id, update, quantity } = payload
     console.log("=====>>>jjjjjjlll", product_id, email, update, quantity);
-    return await axios.patch(`https://herokuawataar.herokuapp.com/updatequantity/${product_id}/${email}`, payload)
+    return await axios.patch(`${BASE_URL}/updatequantity/${product_id}/${email}`, payload)
 }
 export const getitmesList1 = async () => {
     return await axios.get(`${BASE_URL}/card`)

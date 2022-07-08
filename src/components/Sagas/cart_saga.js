@@ -6,21 +6,17 @@ import {FETCH_CART_ITEMS,fetchCartItemsFail,fetchCartItemsSuccess,fetchCartItems
 
 
 // FETCH ALL CART DATA
-function* fetchCartItemsList(payload) {
-   console.log(">>>>>>>>",payload);
+function* fetchCartItemsList() {
+   // console.log(">>>>>>>>",payload);
    
    try { 
-    const {data} = yield call(getAllCartItems,payload);
-console.log(data);
-    console.log("vvvvvvvvvvvv",data);
-    yield put(fetchCartItemsSuccess(data));
-   //  data.cartItems
-   console.log("ssssssssssss",data);
-
-   } catch (e) {
-      yield put(fetchCartItemsFail(e));
-   }
-}
+      const {data} = yield call(getAllCartItems);
+      console.log("vvvvvvvvvvvv",data?.length);
+      yield put(fetchCartItemsSuccess(data?.data));
+     } catch (e) {
+        yield put(fetchCartItemsFail(e));
+     }
+  }
 
 export function* watchCartItemList() {
    yield takeLatest(FETCH_CART_ITEMS, fetchCartItemsList);
@@ -37,6 +33,7 @@ function* addcartItemsList(payload){
       const data = yield call(addNewItemToCart,payload);
       // console.log(">>>>>>>>>", data);
       yield put(fetchCartItems());
+     
         }catch (e) {
            yield put(addCartItemsFail(e));
         }
@@ -56,7 +53,7 @@ function* deletecartItemsList(payload){
       const data = yield call(deleteNewItemToCart,payload);
       console.log(">>>>>>>>>", payload);
       console.log("wwwwwwwwwww",data);
-          yield put(deleteCartItemsSuccess,); 
+          yield put(deleteCartItemsSuccess([])); 
           yield put(fetchCartItems()); // Dispatch Action
           
         }catch (e) {
@@ -76,7 +73,7 @@ export function* watchDeleteToCart() {
       console.log(payload);
       const data = yield call(updateNewItemToCart,payload);
       console.log("hhhhhhhhhhhhhhhhhhh", data);
-          yield put(updateCartItemsSuccess,); 
+          yield put(updateCartItemsSuccess([])); 
           yield put(fetchCartItems()); // Dispatch Action
           
         }catch (e) {
@@ -185,11 +182,8 @@ export function* watchSignupDataList1() {
     yield put(getLoginpDataSuccess (data));
     if(data.token){
       sessionStorage.setItem('token',data.token);
-           
-
-  }
-   
-   } catch (e) {
+    }
+     } catch (e) {
       yield put(getLoginDataFail(e));
    }
 }

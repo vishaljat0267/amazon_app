@@ -9,22 +9,34 @@ import LocationModal from '../../components/LocationModal';
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import SigninPopover from '../../popovers/signinPopover';
+import SigninPopover1 from '../../popovers/signinPopover1';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCartItems, } from '../../components/Redux/cartReducerCumActions'
 import jwt_decode from 'jwt-decode';
 export default function Layout() {
-    console.log("pppppppppppppp>>>????>>>>>>>")
-
-    const items = useSelector((state) => state.cart.items);
-    const d = items?.data;
-    console.log("oooooooooo", d?.length);
+    
+    // const items = useSelector((state) => state.cart.items);
+    // const d = items?.length;
+    const {items} = useSelector((state)=> state.cart);
+    console.log("oooooooooo vishal", items);
     const dispatch = useDispatch();
     const [totalCartItems, setTotalCartItems] = useState(0);
 
     useEffect(() => {
         dispatch(fetchCartItems())
+      
+        
     }, [])
+
+    // const {items} = useSelector((state)=> state.cart);
+    // console.log("qqqqqqq",items)
+    // const dispatch = useDispatch(); 
+    // const [totalCartItems, setTotalCartItems] = useState(0);
+
+    // useEffect(() => {
+    //     dispatch(fetchCartItems())
+    // }, [])
     const navi = useNavigate();
     const { Search } = Input;
     const suffix = (
@@ -60,20 +72,23 @@ export default function Layout() {
 
     }
 
-    const cartadde = async () => {
+    // const cartadde = async () => {
 
-        // e.preventDefault();
-        let n1 = decoded.useremail.email
-        console.log("kjhgfdsxgfchvjbnk>>>", n1);
-        console.log("GET ALL TO CART.................");
-        const item = { "email": n1 }
-        console.log("??????", item);
-        let res = dispatch(fetchCartItems(item))
-        console.log(">>>>>>>", item);
-        console.log("OOOOOOOOOOOO", res);
+    //     // e.preventDefault();
+    //     let n1 = decoded.useremail.email
+    //     console.log("kjhgfdsxgfchvjbnk>>>", n1);
+    //     console.log("GET ALL TO CART.................");
+    //     const item = { "email": n1 }
+    //     console.log("??????", item);
+    //     let res = dispatch(fetchCartItems(item))
+    //     console.log(">>>>>>>", item);
+    //     console.log("OOOOOOOOOOOO", res);
 
 
-    }
+    // }
+   
+  
+   
     return (
         <>
             <div style={{
@@ -113,7 +128,9 @@ export default function Layout() {
                 <div style={{ width: '30%', display: 'flex', height: '-webkit-fill-available' }}>
 
                     <LanguagePopover />
-                    <SigninPopover name={name} />
+                   
+                    {token ?  <SigninPopover1 name={name} /> : <SigninPopover name={name} /> }
+                    
                     <div style={{ width: '20%', display: 'flex', justifyContent: 'center', flexDirection: 'column', textAlign: 'center' }}>
                         <a href="" className="ex1" style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', flexDirection: 'column', height: '100%', width: '90%', textDecoration: 'none' }}>
                             <span style={{ fontSize: '1vw', color: 'white' }}>return</span>
@@ -121,7 +138,7 @@ export default function Layout() {
                     </div>
                     <div style={{ width: '20%', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', position: 'relative' }}>
                         <a href="" className="ex1" style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', alignItems: 'center', flexDirection: 'column', height: '100%', width: '80%' }} onClick={cartShow}>
-                            <div style={{ position: 'absolute', bottom: '35%', marginTop: '11px' }} ><h5 style={{ color: 'orange', fontSize: '1.1vw', zIndex: '9999' }} >{d?.length}</h5></div>
+                            <div style={{ position: 'absolute', bottom: '35%', marginTop: '11px' }} ><h5 style={{ color: 'orange', fontSize: '1.1vw', zIndex: '9999' }} >{items?.length}</h5></div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="white" style={{ fontFamily: 'inherit', fontWeight: '750', fontSize: '1.5vw' }} ><path d="M10 
     19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.305-15l-3.432 12h-10.428l-3.777-9h-2.168l4.615 11h13.239l3.474-12h1.929l.743-2h-4.195z" />
                             </svg>

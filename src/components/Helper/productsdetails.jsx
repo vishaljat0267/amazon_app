@@ -1,12 +1,21 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 
-import { addCartItems } from '../../components/Redux/cartReducerCumActions'
+import { addCartItems, fetchCartItems } from '../../components/Redux/cartReducerCumActions'
 
 export default function Productsdetails() {
+
+//   useEffect(() => {
+//     dispatch(fetchCartItems())
+   
+// }, [])
+
+
+
+
   const navi = useNavigate()
 
   const { state } = useLocation()
@@ -32,12 +41,35 @@ export default function Productsdetails() {
     let n9 = val._id
     console.log("ADD TO CART.................");
     const item = { "title": n1, "description": n2, "price": n3, "category": n4, "image": n5, "rating": n6, "quantity": n7, "email": n8, "product_id": n9 }
-    console.log("qqqqqqqqqqq", item);
+    // console.log("qqqqqqqqqqq", item);
     dispatch(addCartItems(item))
-    setTimeout(() => {
+  setTimeout(() => {
       navi('/proceedNext', { state: val })
     }, 3000);
+
   }
+
+ 
+//   useEffect(() => {
+//     dispatch(fetchCartItems())
+//     cartadde()
+    
+// }, [])
+
+// const cartadde = async () => {
+
+//   // e.preventDefault();
+//   let n1 = decoded.useremail.email
+//   console.log("kjhgfdsxgfchvjbnk>>>", n1);
+//   console.log("GET ALL TO CART.................");
+//   const item = { "email": n1 }
+//   console.log("??????", item);
+//   let res = dispatch(fetchCartItems(item))
+//   // console.log(">>>>>>>", item);
+//   console.log("OOOOOOOOOOOO", res);
+
+
+// }
 
   return (<>
     <div style={{ display: 'flex', flexDirection: '' }}>

@@ -316,7 +316,7 @@ const deleteitems = {
 
 export const deleteitems1 = (state = deleteitems, action) => {
   const { type, payload } = action;
-  console.log("allItemsreducers", type, payload);
+  // console.log("allItemsreducers", type, payload);
   switch (type) {
 
     case DELETE_CART_ITEMS:
@@ -390,7 +390,7 @@ export const loginpdata1 = (state = loginupdata, action) => {
   const { type, payload } = action;
 
 
-  console.log(">>>>>>>>>>>", payload);
+  // console.log(">>>>>>>>>>>", payload);
   switch (type) {
 
     case GET_LOGIN_DATA:

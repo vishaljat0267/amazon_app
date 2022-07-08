@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { cart, deleteCartItems, fetchCartItems, updateCartItems } from '../Redux/cartReducerCumActions';
 import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+import { getAllCartItems } from '../Services/cartservice';
 
 export default function Cardshow() {
+  const [cartData, setCartData] = useState([])
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
-  let d = items?.data;
-
-  useEffect(() => {
-    cartadded()
-  }, [])
+  console.log("bbbbbbb", items)
 
   const token = sessionStorage.getItem("token");
   try {
@@ -20,21 +19,21 @@ export default function Cardshow() {
   }
 
 
+  const gitList = () => {
+    getAllCartItems().then(res => { setCartData(res.data.data) })
 
-  const cartadded = async () => {
-    // e.preventDefault();
-    let n1 = decoded.useremail.email
-    console.log("GET ALL TO CART.................");
-    const item = { "email": n1 }
-    console.log("??????", item);
-    let res = dispatch(fetchCartItems(item))
-    console.log(">>>>>>>", item);
-    console.log("OOOOOOOOOOOO", res);
   }
+  useEffect(() => {
+
+    gitList()
 
 
-  const cartdelete = async (e, product_id) => {
-    e.preventDefault();
+
+  }, [items])
+
+
+
+  const cartdelete = async (product_id) => {
     let n1 = product_id
     let email = decoded.useremail.email
     const item1 = { product_id, email }
@@ -46,9 +45,7 @@ export default function Cardshow() {
     let n1 = product_id
     let n2 = update
     let email = decoded.useremail.email
-    console.log("oooooo", product_id, update, email, quantity)
     const item = { product_id, update, email, quantity }
-    console.log("yyyyyyyyyy", item)
     dispatch(updateCartItems(item))
   }
 
@@ -61,7 +58,7 @@ export default function Cardshow() {
   return (<React.Fragment>
     <div style={{ display: 'flex', width: '100%', height: 'auto', justifyContent: 'space-between', padding: '1%' }}>
       <div style={{ backgroundColor: 'white', height: 'auto', width: '65%', display: 'flex', flexDirection: 'column', padding: '2%' }}>
-        {d?.map((val, key) => {
+        {cartData?.map((val, key) => {
           totalCartPrice += val.price * val.quantity
           return (<React.Fragment key={key}>
             <div key={key} style={{ display: 'flexlex', justifyContent: 'center', height: 'auto', width: '100%' }}>
@@ -77,7 +74,7 @@ export default function Cardshow() {
               <button style={{ border: 'none', width: '20%', backgroundColor: 'gray', height: "100%", borderRadius: '6px' }}>{val.quantity}</button>
               <button style={{ width: '20%', borderRadius: '6px' }} onClick={(e) => cartupdate(e, "inc", val.product_id, val.quantity)}>+</button>
               <div style={{ height: '100%', display: 'flex', justifyContent: 'center', width: '50%' }}>
-                <button onClick={(e) => { cartdelete(e, val.product_id) }} style={{ borderRadius: '8px', background: 'grey', width: '70%' }}>Delete</button>
+                <button onClick={() => { cartdelete(val.product_id) }} style={{ borderRadius: '8px', background: 'grey', width: '70%' }}>Delete</button>
               </div>
 
             </div>
