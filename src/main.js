@@ -12,12 +12,14 @@ import { useRoutes } from 'react-router-dom';
 import Verification from './components/verificationCode/verification';
 import Productsdetails from './components/Helper/productsdetails';
 import Container from './Pages/container';
+import Mobile from './dashboard/helper/mobile';
 
 
 import Cardshow from './components/Helper/cardshow';
 import axios from 'axios';
 
 import ProccedNext from './components/Helper/proccedNext';
+import Payment from './payment/payment';
 
 
  export default function Main() {
@@ -58,13 +60,15 @@ axios.interceptors.response.use(function (response) {
         { path: '/', element: <Container /> },
         { path: 'productDetails', element: <Productsdetails /> },
         { path: 'cardshow', element: <Cardshow /> },
-        {path: 'proceedNext', element:<ProccedNext/>}
+        {path: 'proceedNext', element:<ProccedNext/>},
+        {path :'/mobile', element:<Mobile/>}
       ]
     },
     { path: 'signIn', element: <SignIn /> },
     { path: 'signIn2', element: <SignIn2 /> },
     { path: 'signup', element: <Signup /> },
     { path: 'verification', element: <Verification /> },
+    {path :'/payment', element:<Payment/>},
     // { path: '/addcard', element: <Addcard /> },
     // {path :'/cardshow', element:<Cardshow/>}
 

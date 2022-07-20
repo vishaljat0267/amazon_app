@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAllCartItems } from '../Services/cartservice';
 
 export default function Cardshow() {
+  const navi = useNavigate()
   const [cartData, setCartData] = useState([])
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
@@ -95,8 +96,13 @@ export default function Cardshow() {
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
 
-          <button style={{ height: '10%', width: '60%', borderRadius: '1vw', background: '#ffd814', borderColor: '#fcd200', paddingTop: '', flexWrap: 'wrap' }}>
+          {/* <button style={{ height: '10%', width: '60%', borderRadius: '1vw', background: '#ffd814', borderColor: '#fcd200', paddingTop: '', flexWrap: 'wrap' }}>
             <a style={{ color: 'white', backgroundColor: '#ffd814', fontSize: '2vw' }} className="ex5" href="https://rzp.io/l/i1kL91x">Proceed To Pay </a>
+          </button> */}
+
+<button style={{ height: '10%', width: '60%', borderRadius: '1vw', background: '#ffd814', borderColor: '#fcd200', paddingTop: '',  flexWrap: 'wrap' }}
+          onClick={() => { navi('/payment', {state : totalCartPrice}) }} >
+            Proceed To Pay 
           </button>
 
         </div>

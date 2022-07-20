@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest, } from 'redux-saga/effects'
-import {addNewItemToCart,getAllCartItems,deleteNewItemToCart, updateNewItemToCart, getitmesList1, getitmesList2, getitmesList3, getitmesList4, getsignupDataList3, getloginDataList3} from '../Services/cartservice'
+import {addNewItemToCart,getAllCartItems,deleteNewItemToCart, updateNewItemToCart, getitmesList1, getitmesList2, getitmesList3, getitmesList4, getsignupDataList3, getloginDataList3, getitmesList5} from '../Services/cartservice'
 import {FETCH_CART_ITEMS,fetchCartItemsFail,fetchCartItemsSuccess,fetchCartItems,
-   ADD_CART_ITEMS, addCartItemsFail, addCartItemsSuccess,DELETE_CART_ITEMS,deleteCartItemsFail,deleteCartItemsSuccess, updateCartItemsSuccess, updateCartItemsFail, UPDATE_CART_ITEMS, getCartItemsFail, getCartItemsSuccess,GET_CART_CARTITEMS,GET_CART_CARTITEMS_SUCCESS, getCartcartItemsSuccess, getCartcartItemsFail, GET_CART_CARTITEMS1, getCartcartItems1Fail, getCartcartItems1Success, GET_CART_CARTITEMS2, getCartcartItems2Fail, getCartcartItems2Success, getCartcartItems3Success, getCartcartItems3Fail, getSingupDataSuccess, getSingupDataFail, GET_SINGUP_DATA, getLoginpDataSuccess, getLoginDataFail, GET_LOGIN_DATA,} from '../Redux/cartReducerCumActions'
+   ADD_CART_ITEMS, addCartItemsFail, addCartItemsSuccess,DELETE_CART_ITEMS,deleteCartItemsFail,deleteCartItemsSuccess, updateCartItemsSuccess, updateCartItemsFail, UPDATE_CART_ITEMS, getCartItemsFail, getCartItemsSuccess,GET_CART_CARTITEMS,GET_CART_CARTITEMS_SUCCESS, getCartcartItemsSuccess, getCartcartItemsFail, GET_CART_CARTITEMS1, getCartcartItems1Fail, getCartcartItems1Success, GET_CART_CARTITEMS2, getCartcartItems2Fail, getCartcartItems2Success, getCartcartItems3Success, getCartcartItems3Fail, getSingupDataSuccess, getSingupDataFail, GET_SINGUP_DATA, getLoginpDataSuccess, getLoginDataFail, GET_LOGIN_DATA, getCartcartItems4Success, getCartcartItems4Fail, GET_CART_CARTITEMS4,} from '../Redux/cartReducerCumActions'
 
 
 
@@ -151,6 +151,25 @@ export function* watchCartItemList3() {
 export function* watchCartItemList4() {
    yield takeLatest(GET_CART_CARTITEMS2, getCartItemsList3);
  }
+
+ //--------------------------------------------------------//
+
+ function* getCartItemsList4() {
+   
+   try { 
+    const {data} = yield call(getitmesList5 );
+   //  console.log("saga",data);
+    yield put(getCartcartItems4Success(data?.data));
+
+   } catch (e) {
+      yield put(getCartcartItems4Fail(e));
+   }
+}
+
+export function* watchCartItemList5() {
+   yield takeLatest(GET_CART_CARTITEMS4, getCartItemsList4);
+ }
+
 
 //-------------signup data----------------------------
 

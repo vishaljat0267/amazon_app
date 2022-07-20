@@ -13,7 +13,7 @@ export default function Header() {
                     </a>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1.2vw', color: 'white' }}>
-                    <a href="" className="ex1" style={{ color: 'white', textDecoration: 'none' }}>
+                    <a href="./mobile" className="ex1" style={{ color: 'white', textDecoration: 'none' }}>
                         Mobile
                     </a>
                 </div>

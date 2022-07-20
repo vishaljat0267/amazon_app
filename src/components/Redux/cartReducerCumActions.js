@@ -63,6 +63,15 @@ export const getCartcartItems3Success = (payload) => ({ type: GET_CART_CARTITEMS
 export const getCartcartItems3Fail = (payload) => ({ type: GET_CART_CARTITEMS3_FAIL, payload });
 export const getCartcartItems3 = (payload) => ({ type: GET_CART_CARTITEMS3, payload });
 
+export const GET_CART_CARTITEMS4_FAIL = "GET_CART_CARTITEMS4_FAIL";
+export const GET_CART_CARTITEMS4_SUCCESS = "GET_CART_CARTITEMS4_SUCCESS";
+export const GET_CART_CARTITEMS4 = "GET_CART_CARTITEMS4"
+
+export const getCartcartItems4Success = (payload) => ({ type: GET_CART_CARTITEMS4_SUCCESS, payload });
+export const getCartcartItems4Fail = (payload) => ({ type: GET_CART_CARTITEMS4_FAIL, payload });
+export const getCartcartItems4 = (payload) => ({ type: GET_CART_CARTITEMS4, payload });
+
+
 
 export const GET_SINGUP_DATA_FAIL = "GET_SINGUP_DATA_FAIL";
 export const GET_SINGUP_DATA_SUCCESS = "GET_SINGUP_DATA_SUCCESS";
@@ -298,6 +307,42 @@ export const allItems3 = (state = itemsState3, action) => {
 
         loading: true,
         cartitems3: payload
+      }
+    default:
+      return state
+  }
+}
+
+//----------------------------------------------------------//
+
+const itemsState4 = {
+  loading: true,
+  cartitems4: []
+
+
+
+}
+
+export const allItems4 = (state = itemsState4, action) => {
+  const { type, payload } = action;
+  // console.log("allItemsreducers",type, payload);
+  switch (type) {
+
+    case GET_CART_CARTITEMS4:
+      return {
+        loading: false,
+        cartitems4: payload
+      }
+    case GET_CART_CARTITEMS4_FAIL:
+      return {
+        loading: false,
+        cartitems4: payload
+      }
+    case GET_CART_CARTITEMS4_SUCCESS:
+      return {
+
+        loading: true,
+        cartitems4: payload
       }
     default:
       return state

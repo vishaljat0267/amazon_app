@@ -49,6 +49,10 @@ export const getitmesList4 = async () => {
     return await axios.get(`${BASE_URL}/card4`)
 }
 
+export const getitmesList5 = async () => {
+    return await axios.get(`${BASE_URL}/mobileproducts`)
+}
+
 
 export const getsignupDataList3 = async (newItem) => {
     console.log(newItem.payload);
